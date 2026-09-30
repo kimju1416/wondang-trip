@@ -25,7 +25,7 @@
   --r1:10px; --r2:14px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{overflow-x:hidden}
+html,body{overflow-x:clip}
 body{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;background:var(--bg);color:var(--tx);font-size:15px;line-height:1.6;word-break:keep-all;overflow-wrap:anywhere;-webkit-text-size-adjust:100%}
 a{color:inherit}
 img{max-width:100%;display:block}
@@ -141,6 +141,35 @@ table.menu th{border-top:1px solid var(--line)}
 table.menu tr:first-child th{border-top:0}
 .var{color:var(--err);font-size:12px;font-weight:600}
 
+/* 모둠 기록 */
+.grpc{background:var(--card);border:1px solid var(--line);border-radius:var(--r2);padding:16px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.fld{display:block;margin-top:12px}
+.fld>span{display:block;font-size:13px;font-weight:600;color:var(--sub);margin-bottom:4px}
+.fld input,.fld select,.fld textarea{width:100%;min-height:46px;border:1px solid var(--line);border-radius:var(--r1);padding:10px 12px;font:inherit;font-size:16px;background:#fff;color:var(--tx)}
+.fld textarea{min-height:72px;resize:vertical}
+.fld input:focus,.fld select:focus,.fld textarea:focus{outline:0;border-color:var(--pt);box-shadow:0 0 0 3px rgba(224,90,30,.12)}
+.fld input:disabled{background:#F6F0EA}
+.picks{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px}
+.picks button{appearance:none;font:inherit;font-size:13px;font-weight:600;min-height:34px;padding:0 11px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--sub);cursor:pointer}
+.picks button.on{background:var(--pt);border-color:var(--pt);color:#fff}
+.ms .body{border-top:1px solid var(--line);margin:12px -16px 0;padding:0 16px 2px}
+.ms .body .chk{border:0;border-radius:0;margin:0 -16px;border-bottom:1px solid var(--line)}
+.ph{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line)}
+.ph label.btn{display:flex;align-items:center;justify-content:center;height:48px;border-radius:var(--r1);border:1px solid var(--pt);color:var(--pt);font-weight:700;background:#fff;cursor:pointer}
+.ph label.btn input{display:none}
+.ph .st{font-size:13px;color:var(--sub);margin-top:6px}
+.ph .st:empty{display:none}
+.ph .thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-top:8px}
+.ph .thumbs:empty{display:none}
+.ph .thumbs img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:6px}
+.lock{opacity:.5;pointer-events:none}
+.savebar{position:sticky;bottom:0;z-index:15;margin:16px -16px 0;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--line);display:flex;align-items:center;gap:10px}
+.savebar .msg{flex:1;font-size:13px;color:var(--sub);line-height:1.4}
+.savebar .msg.err{color:var(--err)}
+.savebar .msg.ok{color:var(--ok)}
+.savebar button{flex:none;height:44px;padding:0 18px;border:0;border-radius:var(--r1);background:var(--pt);color:#fff;font:inherit;font-weight:700;cursor:pointer}
+.savebar button:disabled{background:#D9C9BA}
 footer{text-align:center;font-size:12px;color:var(--sub);padding:0 16px 32px}
 </style>
 </head>
@@ -308,10 +337,23 @@ footer{text-align:center;font-size:12px;color:var(--sub);padding:0 16px 32px}
         <li>안전·질서·시설 이용 규칙을 가장 먼저 지켜요.</li>
         <li>다른 사람의 얼굴이 사진에 나오지 않게 배려해요.</li>
       </ul>
-      <p class="small muted" style="margin-top:10px">반별 최우수 1팀·우수 1팀에 상품권을 드려요. 대표 사진 2~3장은 학교에 돌아와 제출할 수 있게 보관하세요.</p>
+      <p class="small muted" style="margin-top:10px">반별 최우수 1팀·우수 1팀에 상품권을 드려요. 사진은 각 미션의 '사진 올리기'로 올려 주세요.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="grpc">
+      <h2 style="margin:0">우리 모둠 기록</h2>
+      <p class="small muted">반과 모둠을 고르면 적은 내용과 사진이 학교 구글 시트·드라이브에 저장돼요. 같은 모둠 친구 폰에서도 이어서 적을 수 있어요.</p>
+      <div class="row2" style="margin-top:4px">
+        <label class="fld"><span>반</span><select id="gCls"><option value="">선택</option><option value="1">2학년 1반</option><option value="2">2학년 2반</option></select></label>
+        <label class="fld"><span>모둠</span><select id="gGrp"><option value="">선택</option></select></label>
+      </div>
+      <label class="fld"><span>모둠원 이름</span><input id="gMembers" placeholder="예) 모둠원 이름을 쉼표로" maxlength="80"></label>
+      <label class="fld"><span>내 이름 (사진 올린 사람)</span><input id="gMe" placeholder="이름" maxlength="10"></label>
     </div>
   </div>
   <div class="sec" id="msList"></div>
+  <div class="savebar"><div class="msg" id="saveMsg">반과 모둠을 먼저 골라 주세요.</div><button id="saveBtn" disabled>저장</button></div>
 </section>
 </main>
 
@@ -445,31 +487,222 @@ checklist($('#packList'), 'wd-pack', PACK, () => {
   $('#packCnt').textContent = `${n} / ${PACK.length}`;
 });
 
-// ── 모둠 미션 ──
+// ── 모둠 미션 + 기록(구글 시트 연동) ──
+const API = 'https://script.google.com/macros/s/AKfycbz7EV1I_P3W4-8PYbvggs28vZi2giM_XQ--opL75Qg-tpaVIGr5iD1jeJZm9abHM2rp/exec';
+const POSES = ['모두 같은 포즈','누가 봐도 웃긴 포즈','영화 포스터 포즈','에버랜드 광고 포즈','뒤돌아보기 포즈','자유 포즈'];
+const SCENES = ['장터','선비와 하인','양반집 가족','농사짓는 모습','전통 혼례','우리만의 장면'];
+const PHTAG = {m1:'M1',m2:'M2',m4:'M4',m5:'M5',day1:'DAY1',day2:'DAY2'};
 const MS = [
   {day:'DAY 1 · 에버랜드 탐험대'},
   {no:1,pt:20,t:'에버랜드 보물찾기',d:'5개 중 4개 이상 성공하면 통과',c:[
     '컬러 헌트 — 빨강·노랑·파랑 물건을 하나씩 찾아 사진 찍기','영어 찾기 — 에버랜드에서 발견한 영어 단어 3개 적기',
-    '포즈 따라잡기 — 놀이기구나 캐릭터가 떠오르는 포즈로 모둠 사진','우리만의 명소 — 예쁜 장소에서 사진 찍고 이유 한마디','탑승 희망 1순위 — 가장 타고 싶은 놀이기구 앞에서 인증샷']},
-  {no:2,pt:15,t:'찰칵! 우리 모둠 포토 챌린지',d:'하나를 골라 10초 안에 찍기 — 모두 같은 포즈 · 웃긴 포즈 · 영화 포스터 · 에버랜드 광고 · 뒤돌아보기 · 자유 포즈',c:[
-    '사진 촬영 완료','사진 제목과 한 줄 설명 쓰기']},
+    '포즈 따라잡기 — 놀이기구나 캐릭터가 떠오르는 포즈로 모둠 사진','우리만의 명소 — 예쁜 장소에서 사진 찍고 이유 한마디','탑승 희망 1순위 — 가장 타고 싶은 놀이기구 앞에서 인증샷'],
+   f:[['m1_en1','영어 단어 ①'],['m1_en2','영어 단어 ②'],['m1_en3','영어 단어 ③'],['m1_place','우리만의 명소 — 고른 이유 한마디'],['m1_ride','탑승 희망 1순위 놀이기구']], ph:'m1'},
+  {no:2,pt:15,t:'찰칵! 우리 모둠 포토 챌린지',d:'하나를 골라 10초 안에 찍어 보세요.',c:[
+    '사진 촬영 완료','사진 제목과 한 줄 설명 쓰기'],
+   f:[['m2_pose','고른 포즈',POSES],['m2_title','사진 제목'],['m2_desc','우리 사진의 한 줄 설명']], ph:'m2'},
   {no:3,pt:15,t:'30초 에버랜드 광고',d:'추천하고 싶은 장소나 놀이기구를 30초 영상으로 소개하기. 멋진 말보다 재미있는 소개가 더 좋아요.',c:[
-    '추천 장소와 추천 이유 한 문장 정하기','영상 촬영 완료','모둠원 모두 참여']},
-  {note:'DAY 1 마무리',d:'대표 사진 2~3장을 귀교 후 제출할 수 있게 보관하기 · 오늘의 한 줄 기록 — 오늘 가장 기억에 남는 순간은?'},
+    '추천 장소와 추천 이유 한 문장 정하기','영상 촬영 완료','모둠원 모두 참여'],
+   f:[['m3_place','추천 장소 / 놀이기구'],['m3_reason','추천 이유 한 문장']], vnote:'영상은 용량이 커서 여기서 올리지 않아요. 폰에 잘 보관했다가 학교에서 제출하세요.'},
+  {note:'DAY 1 마무리',d:'대표 사진 2~3장을 올려 주세요. 오늘 가장 기억에 남는 순간도 한 줄로 남겨요.',
+   f:[['d1_memo','오늘의 한 줄 기록 — 가장 기억에 남는 순간은?','','area']], ph:'day1'},
   {day:'DAY 2 · 한국민속촌 탐험대'},
   {no:4,pt:20,t:'조선시대 탐정',d:'2026년에서 조선시대로 시간여행을 왔다고 생각하고 찾아보기',c:[
-    '초가집 찾아 사진 찍기','기와집 찾아 사진 찍기','옛날 생활도구 2개 찾아 적기','전통 놀이 하나 찾아 이름 적기','조선시대 직업 하나 찾아 적기']},
-  {no:5,pt:15,t:'조선시대 한 장면',d:'모둠원 모두 등장하는 한 장면을 사진 1장으로 — 장터 · 선비와 하인 · 양반집 가족 · 농사짓는 모습 · 전통 혼례 · 우리만의 장면. 의상·소품은 무리해서 준비하지 않아도 돼요.',c:[
-    '사진 촬영 완료']},
-  {no:6,pt:15,t:'타임머신! 조선시대에 떨어진다면?',d:'모둠원과 이야기해서 하나의 답으로 정하기',c:[
-    '조선시대에서 가장 불편할 것 같은 것','조선시대에서 가장 재미있을 것 같은 것','현대에서 꼭 가져가고 싶은 물건 1가지']},
+    '초가집 찾아 사진 찍기','기와집 찾아 사진 찍기','옛날 생활도구 2개 찾아 적기','전통 놀이 하나 찾아 이름 적기','조선시대 직업 하나 찾아 적기'],
+   f:[['m4_tool1','옛날 생활도구 ①'],['m4_tool2','옛날 생활도구 ②'],['m4_play','전통 놀이 이름'],['m4_job','조선시대 직업']], ph:'m4'},
+  {no:5,pt:15,t:'조선시대 한 장면',d:'모둠원 모두 등장하는 한 장면을 사진 1장으로. 의상·소품은 무리해서 준비하지 않아도 돼요.',c:[
+    '사진 촬영 완료'],
+   f:[['m5_scene','우리가 표현한 장면',SCENES]], ph:'m5'},
+  {no:6,pt:15,t:'타임머신! 조선시대에 떨어진다면?',d:'모둠원 모두의 의견을 들어보고 하나의 답으로 정하기',c:[
+    '조선시대에서 가장 불편할 것 같은 것','조선시대에서 가장 재미있을 것 같은 것','현대에서 꼭 가져가고 싶은 물건 1가지'],
+   f:[['m6_1','가장 불편할 것 같은 것'],['m6_2','가장 재미있을 것 같은 것'],['m6_3','현대에서 꼭 가져가고 싶은 물건 1가지']]},
+  {fin:1,t:'수학여행을 마치며',d:'DAY 2 대표 사진도 올려 주세요.',
+   f:[['score','우리 모둠 최종 점수 (100점 만점)'],['end_best','우리 모둠이 이번 여행에서 가장 잘한 것은?','','area'],['end_msg','친구들에게 한마디','','area']], ph:'day2'},
 ];
-$('#msList').innerHTML = MS.map((m,i) => m.day
-  ? `<div class="lbl" style="margin-top:${i?24:0}px">${m.day}</div>`
-  : m.note ? `<div class="ms" style="background:var(--pt-soft);border-color:#F3D3BD"><div class="ms-h"><h3><small>CHECK</small>${m.note}</h3></div><p>${m.d}</p></div>`
-  : `<div class="ms"><div class="ms-h"><h3><small>MISSION ${m.no}</small>${m.t}</h3><div class="pt">${m.pt}<small>점</small></div></div><p>${m.d}</p><ul class="chk" id="ms${m.no}"></ul></div>`
-).join('') + `<div class="ms"><div class="ms-h"><h3><small>FINISH</small>수학여행을 마치며</h3></div><p>우리 모둠이 이번 여행에서 가장 잘한 것은? · 친구들에게 한마디</p></div><p class="small muted" style="margin-top:14px">총 100점 (DAY 1 50점 · DAY 2 50점). 특별상: 최우수 모둠상 · 협동상 · 베스트 포토상 · 웃음상 · 창의상 · 탐정상</p>`;
-MS.filter(m => m.no).forEach(m => checklist(document.getElementById('ms'+m.no), 'wd-ms'+m.no, m.c));
+
+const fieldHTML = f => `<label class="fld"><span>${f[1]}</span>${f[2]&&f[2].length?`<div class="picks" data-for="${f[0]}">${f[2].map(o=>`<button type="button" data-v="${o}">${o}</button>`).join('')}</div>`:''}${f[3]==='area'?`<textarea data-f="${f[0]}" maxlength="300"></textarea>`:`<input data-f="${f[0]}" maxlength="${f[0]==='score'?3:120}"${f[0]==='score'?' inputmode="numeric"':''}>`}</label>`;
+const photoHTML = m => m.ph ? `<div class="ph" data-ph="${m.ph}"><label class="btn"><input type="file" accept="image/*" multiple>사진 올리기</label><div class="st"></div><div class="thumbs"></div></div>` : (m.vnote?`<p class="small muted" style="margin-top:12px">${m.vnote}</p>`:'');
+$('#msList').innerHTML = MS.map((m,i) => {
+  if (m.day) return `<div class="lbl" style="margin-top:${i?24:0}px">${m.day}</div>`;
+  const head = m.no ? `<div class="ms-h"><h3><small>MISSION ${m.no}</small>${m.t}</h3><div class="pt">${m.pt}<small>점</small></div></div>`
+    : `<div class="ms-h"><h3><small>${m.fin?'FINISH':'CHECK'}</small>${m.t||m.note}</h3></div>`;
+  const chk = m.c ? `<ul class="chk" data-ms="ms${m.no}">${m.c.map((t,j)=>`<li><label><input type="checkbox" data-i="${j}"><span>${t}</span></label></li>`).join('')}</ul>` : '';
+  return `<div class="ms gate">${head}<p>${m.d}</p><div class="body">${chk}${m.f.map(fieldHTML).join('')}${photoHTML(m)}</div></div>`;
+}).join('') + `<p class="small muted" style="margin-top:14px">총 100점 (DAY 1 50점 · DAY 2 50점). 특별상: 최우수 모둠상 · 협동상 · 베스트 포토상 · 웃음상 · 창의상 · 탐정상</p>`;
+for (let g=1; g<=8; g++) $('#gGrp').insertAdjacentHTML('beforeend', `<option value="${g}">${g}모둠</option>`);
+
+// 상태: 고른 모둠, 서버 기록, 아직 못 보낸 변경(모둠별로 폰에 보관)
+let G = LS('wd-grp') || {cls:'',grp:''};
+let REC = null;
+const PEND = LS('wd-pend') || {};
+const gk = () => G.cls && G.grp ? G.cls+'-'+G.grp : '';
+const pend = () => (PEND[gk()] = PEND[gk()] || {f:{}, c:{}});
+const savePend = () => LSset('wd-pend', PEND);
+const hasPend = k => { const p = PEND[k]; return !!p && (p.members!==undefined || Object.keys(p.f).length>0 || Object.keys(p.c).length>0); };
+function msg(t, cls){ const el=$('#saveMsg'); el.textContent=t; el.className='msg '+(cls||''); }
+
+function applyRec(rec){
+  REC = rec || {members:'', f:{}, c:{}};
+  const p = PEND[gk()] || {f:{}, c:{}};
+  const mem = p.members!==undefined ? p.members : REC.members;
+  if (document.activeElement !== $('#gMembers')) $('#gMembers').value = mem || '';
+  document.querySelectorAll('[data-f]').forEach(el => {
+    const k = el.dataset.f;
+    if (el !== document.activeElement) el.value = k in p.f ? p.f[k] : (REC.f[k] || '');
+    syncPicks(k);
+  });
+  document.querySelectorAll('.chk[data-ms] input').forEach(el => {
+    const ms = el.closest('.chk').dataset.ms, i = el.dataset.i;
+    const pv = p.c[ms] && i in p.c[ms] ? p.c[ms][i] : undefined;
+    el.checked = pv !== undefined ? pv : !!(REC.c[ms] && REC.c[ms][i]);
+  });
+}
+function syncPicks(k){
+  const box = document.querySelector(`.picks[data-for="${k}"]`); if(!box) return;
+  const v = document.querySelector(`[data-f="${k}"]`).value;
+  box.querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.v===v));
+}
+function renderPhotos(list){
+  document.querySelectorAll('.ph').forEach(box => {
+    if (box.dataset.busy) return;
+    const n = (list||[]).filter(x => x.m.split(' ')[0] === PHTAG[box.dataset.ph]).length;
+    box.querySelector('.st').textContent = n ? `우리 모둠 사진 ${n}장 저장됨` : '';
+  });
+}
+function setLock(){
+  const on = !!gk();
+  document.querySelectorAll('.gate').forEach(el => el.classList.toggle('lock', !on));
+  $('#gMembers').disabled = !on;
+  $('#saveBtn').disabled = !on;
+  if (!on) msg('반과 모둠을 먼저 골라 주세요.');
+}
+
+async function post(body){
+  const r = await fetch(API, {method:'POST', body: JSON.stringify(body)});
+  const j = await r.json();
+  if (!j.ok) throw new Error(j.error || '저장 실패');
+  return j;
+}
+let loading = 0;
+async function loadGroup(){
+  if (!gk()) return;
+  const key = gk(), t = ++loading;
+  try {
+    const r = await fetch(`${API}?cls=${G.cls}&grp=${G.grp}`); const j = await r.json();
+    if (t !== loading || key !== gk()) return;
+    if (!j.ok) throw new Error(j.error);
+    LSset('wd-rec-'+key, j.rec); applyRec(j.rec); renderPhotos(j.photos);
+    if (hasPend(key)) save();
+    else msg(j.rec ? `불러옴 · 마지막 저장 ${j.rec.saved.slice(6,11)}` : '새 모둠이에요. 적으면 자동으로 저장돼요.', 'ok');
+  } catch(e){
+    if (key === gk()) msg('인터넷이 약해 불러오지 못했어요. 적은 내용은 폰에 두었다가 연결되면 저장해요.', 'err');
+  }
+}
+
+let saving = false, timer = 0;
+function queue(){ clearTimeout(timer); timer = setTimeout(save, 1500); msg('저장 대기 중…'); }
+async function save(){
+  clearTimeout(timer); timer = 0;
+  const key = gk();
+  if (!key || saving) return;
+  if (!hasPend(key)) { msg('모두 저장됨', 'ok'); return; }
+  saving = true; $('#saveBtn').disabled = true; msg('저장 중…');
+  const sent = JSON.parse(JSON.stringify(PEND[key]));
+  const [cls, grp] = key.split('-');
+  let failed = false;
+  try {
+    const j = await post(Object.assign({cls, grp}, sent));
+    const p = PEND[key];
+    if (p.members === sent.members) delete p.members;
+    Object.keys(sent.f).forEach(k => { if (p.f[k] === sent.f[k]) delete p.f[k]; });
+    Object.keys(sent.c).forEach(ms => Object.keys(sent.c[ms]).forEach(i => { if (p.c[ms] && p.c[ms][i] === sent.c[ms][i]) delete p.c[ms][i]; }));
+    Object.keys(p.c).forEach(ms => { if (!Object.keys(p.c[ms]).length) delete p.c[ms]; });
+    savePend(); LSset('wd-rec-'+key, j.rec);
+    if (key === gk()) { REC = j.rec; msg(`저장됨 · ${j.rec.saved.slice(6,11)}`, 'ok'); }
+  } catch(e){
+    failed = true;
+    msg('저장하지 못했어요. 인터넷이 연결되면 자동으로 다시 저장해요.', 'err');
+    timer = setTimeout(save, 20000);
+  } finally {
+    saving = false; $('#saveBtn').disabled = !gk();
+    if (!failed && hasPend(key)) queue();
+  }
+}
+
+// 입력 이벤트
+$('#msList').addEventListener('input', e => {
+  const k = e.target.dataset.f; if (!k || !gk()) return;
+  pend().f[k] = e.target.value; savePend(); syncPicks(k); queue();
+});
+$('#msList').addEventListener('click', e => {
+  const b = e.target.closest('.picks button'); if (!b || !gk()) return;
+  e.preventDefault();
+  const k = b.parentElement.dataset.for, el = document.querySelector(`[data-f="${k}"]`);
+  el.value = el.value === b.dataset.v ? '' : b.dataset.v;
+  el.dispatchEvent(new Event('input', {bubbles:true}));
+});
+$('#msList').addEventListener('change', e => {
+  const el = e.target;
+  if (el.type === 'checkbox' && gk()){
+    const ms = el.closest('.chk').dataset.ms, p = pend();
+    (p.c[ms] = p.c[ms] || {})[el.dataset.i] = el.checked; savePend(); queue();
+  }
+  if (el.type === 'file') upload(el);
+});
+$('#gMembers').addEventListener('input', e => { if(!gk()) return; pend().members = e.target.value; savePend(); queue(); });
+$('#gMe').value = LS('wd-me') || '';
+$('#gMe').addEventListener('input', e => LSset('wd-me', e.target.value.trim()));
+function pickGroup(){
+  if (gk() && hasPend(gk())) save();
+  G = {cls: $('#gCls').value, grp: $('#gGrp').value}; LSset('wd-grp', G);
+  setLock(); renderPhotos([]);
+  document.querySelectorAll('.ph .thumbs').forEach(t => t.innerHTML = '');
+  applyRec(LS('wd-rec-'+gk()));
+  if (gk()) { msg('불러오는 중…'); loadGroup(); }
+}
+$('#gCls').value = G.cls; $('#gGrp').value = G.grp;
+$('#gCls').addEventListener('change', pickGroup);
+$('#gGrp').addEventListener('change', pickGroup);
+$('#saveBtn').addEventListener('click', () => { hasPend(gk()) ? save() : loadGroup(); });
+setLock(); applyRec(LS('wd-rec-'+gk()));
+if (gk()) loadGroup();
+window.addEventListener('online', () => { if (gk()) save(); });
+document.addEventListener('visibilitychange', () => { if (!document.hidden && gk()) { hasPend(gk()) ? save() : loadGroup(); } });
+document.querySelector('.tabs').addEventListener('click', e => { const b=e.target.closest('button'); if (b && b.dataset.t==='mission' && gk() && !hasPend(gk())) loadGroup(); });
+
+// 사진: 긴 변 1600px JPEG로 줄여서 한 장씩 올림
+function shrink(file){
+  return new Promise((ok, no) => {
+    const url = URL.createObjectURL(file), img = new Image();
+    img.onload = () => {
+      const s = Math.min(1, 1600 / Math.max(img.width, img.height));
+      const c = document.createElement('canvas'); c.width = Math.round(img.width*s); c.height = Math.round(img.height*s);
+      c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+      URL.revokeObjectURL(url); ok(c.toDataURL('image/jpeg', 0.82));
+    };
+    img.onerror = () => { URL.revokeObjectURL(url); no(new Error('사진을 읽지 못했어요')); };
+    img.src = url;
+  });
+}
+async function upload(input){
+  const box = input.closest('.ph'), st = box.querySelector('.st'), files = [...input.files];
+  input.value = '';
+  if (!files.length || !gk()) return;
+  const [cls, grp] = gk().split('-'); box.dataset.busy = 1;
+  let fail = 0, photos = null;
+  for (let i = 0; i < files.length; i++){
+    st.textContent = `사진 올리는 중… ${i+1} / ${files.length}`;
+    try {
+      const data = await shrink(files[i]);
+      const j = await post({type:'photo', cls, grp, m: box.dataset.ph, by: $('#gMe').value.trim(), data});
+      photos = j.photos;
+      box.querySelector('.thumbs').insertAdjacentHTML('beforeend', `<img src="${data}" alt="올린 사진">`);
+    } catch(e){ fail++; }
+  }
+  delete box.dataset.busy;
+  if (photos) renderPhotos(photos); else st.textContent = '';
+  if (fail) st.textContent += (st.textContent ? ' · ' : '') + `${fail}장은 올리지 못했어요. 인터넷 확인 후 다시 올려 주세요.`;
+}
 </script>
 </body>
 </html>

@@ -25,7 +25,7 @@
   --r1:10px; --r2:14px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{overflow-x:hidden}
+html,body{overflow-x:clip}
 body{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;background:var(--bg);color:var(--tx);font-size:15px;line-height:1.6;word-break:keep-all;overflow-wrap:anywhere;-webkit-text-size-adjust:100%}
 a{color:inherit}
 img{max-width:100%;display:block}
@@ -244,6 +244,14 @@ footer{text-align:center;font-size:12px;color:var(--sub);padding:0 16px 32px}
 
 <!-- 운영 -->
 <section class="pane" id="ops">
+  <div class="sec">
+    <h2>모둠 미션 기록 보기</h2>
+    <div class="grid2">
+      <a class="card" style="text-decoration:none" href="https://docs.google.com/spreadsheets/d/1twpRDmiFqBppvsnrqsnqocVEkRYmTRADb3CyToG9qcM/edit" target="_blank" rel="noopener"><div class="lbl" style="margin:0">구글 시트</div><b>적은 내용 · 체크 현황</b></a>
+      <a class="card" style="text-decoration:none" href="https://drive.google.com/drive/folders/1Ct4o5TPxuwBmhpg01iNlS0CxwEupm5YO" target="_blank" rel="noopener"><div class="lbl" style="margin:0">구글 드라이브</div><b>모둠별 사진 폴더</b></a>
+    </div>
+    <p class="small muted" style="margin-top:6px">학생이 학생용 페이지 '미션' 탭에서 적고 올린 내용이 모입니다. 시트·폴더를 공유받은 계정에서만 열립니다.</p>
+  </div>
   <div class="sec">
     <h2>개요</h2>
     <dl class="facts">
