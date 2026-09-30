@@ -116,8 +116,22 @@ ul.dot li::before{content:"";position:absolute;left:0;top:.7em;width:5px;height:
 mark{background:#FFE58A;color:inherit;border-radius:3px;padding:0 1px}
 .empty{padding:20px 16px;color:var(--sub);font-size:14px}
 .floor{background:#fff;border:1px solid var(--line);border-radius:var(--r2);overflow:hidden}
-.floor a{display:block}
-.floor p{font-size:12px;color:var(--sub);padding:8px 12px;border-top:1px solid var(--line)}
+.map{position:relative;line-height:0}
+.map img{width:100%}
+.map button{position:absolute;padding:0;border:2px solid transparent;background:transparent;border-radius:3px;cursor:pointer}
+.map button.hit{border-color:rgba(31,58,95,.55)}
+.map button.sel{border:3px solid #E05A1E;background:rgba(224,90,30,.28);box-shadow:0 0 0 3px rgba(255,255,255,.9);z-index:2;animation:blink 1.2s ease-in-out 2}
+@keyframes blink{50%{background:rgba(224,90,30,.6)}}
+@media (prefers-reduced-motion:reduce){.map button.sel{animation:none}}
+.pick{padding:12px 14px;border-top:1px solid var(--line);min-height:62px}
+.pick .no{font-size:22px;font-weight:800;color:#E05A1E;margin-right:8px;font-variant-numeric:tabular-nums}
+.pick .who{font-size:15px;font-weight:700}
+.pick .muted{font-size:13px}
+.floor .foot{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--sub);padding:8px 12px;border-top:1px solid var(--line)}
+.floor .foot a{color:var(--pt);font-weight:600;white-space:nowrap}
+.rooms li{cursor:pointer}
+.rooms li.sel{background:#FDEEE5}
+.rooms li.sel .no{color:#E05A1E}
 
 /* 연락처 */
 .ppl{list-style:none;background:var(--card);border:1px solid var(--line);border-radius:var(--r2);overflow:hidden}
@@ -194,6 +208,13 @@ footer{text-align:center;font-size:12px;color:var(--sub);padding:0 16px 32px}
 <!-- 방배정 -->
 <section class="pane" id="room">
   <div class="sec">
+    <div class="floor" id="floor">
+      <div class="map" id="map"><img src="../img/floor1.jpg" alt="푸르미르 호텔 1층 객실 배치도"></div>
+      <div class="pick" id="pick"><span class="muted">배치도의 방이나 아래 목록을 누르면 방 위치와 누가 있는지 보여요.</span></div>
+      <div class="foot"><span>118호 옆 '회의실로 사용' 표시 · GATE 3·4·5</span><a href="../img/floor1.jpg" target="_blank" rel="noopener">크게 보기</a></div>
+    </div>
+  </div>
+  <div class="sec">
     <div class="search">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
       <input id="q" type="search" placeholder="학생 이름 또는 호수" autocomplete="off">
@@ -207,13 +228,6 @@ footer{text-align:center;font-size:12px;color:var(--sub);padding:0 16px 32px}
       <button aria-pressed="false" data-f="t">교사</button>
     </div>
     <ul class="rooms" id="rooms"></ul>
-  </div>
-  <div class="sec">
-    <h2>1층 객실 위치</h2>
-    <div class="floor">
-      <a href="../img/floor1.jpg" target="_blank" rel="noopener"><img src="../img/floor1.jpg" alt="푸르미르 호텔 1층 객실 배치도"></a>
-      <p>눌러서 크게 보기 · 배치도상 118호 옆에 '회의실로 사용' 표시 · GATE 3·4·5 위치 확인</p>
-    </div>
   </div>
 </section>
 
@@ -449,7 +463,7 @@ const ROOMS = [
 ];
 const TEACH = [
   ['권유경','교감 · 인솔 책임자 · 2호차','010-2875-0274'],
-  ['한유정','2-1 담임 · 전체 진행/총무 · 1호차','010-3507-0153'],
+  ['한유정','2-1 담임 · 전체 진행/총무 · 1호차 · 안심번호','0503-7250-2490'],
   ['김도근','2-2 담임 · 안전요원 · 2호차','010-2851-6780'],
   ['김국연','학생안전부장 · 안전요원 · 1호차','010-4949-2143'],
   ['권영교','진로상담부장 · 응급/비상약 · 2호차','010-4528-0913'],
@@ -542,15 +556,39 @@ function renderRooms(){
     const cnt = r[2].split(',').length;
     let who = esc(r[2]);
     if (q) who = who.split(esc(q)).join(`<mark>${esc(q)}</mark>`);
-    return `<li><div class="no">${r[0]}</div><div><div class="meta"><span class="tag ${cls}">${r[0]==='106'?'교사+2반 여':lab}</span>${cnt}명</div><div class="who">${who}</div></div></li>`;
+    return `<li data-room="${r[0]}" class="${r[0]===selRoom?'sel':''}"><div class="no">${r[0]}</div><div><div class="meta"><span class="tag ${cls}">${r[0]==='106'?'교사+2반 여':lab}</span>${cnt}명</div><div class="who">${who}</div></div></li>`;
   }).join('') : `<li class="empty" style="display:block">'${esc(q)}'에 해당하는 방이 없습니다.</li>`;
 }
-$('#q').addEventListener('input', renderRooms);
+const ROOM_POS = {"107":[28.62,1.64,5.52,19.47],"108":[34.05,1.64,5.52,19.47],"109":[39.66,1.64,5.52,19.47],"110":[45.09,1.64,5.52,19.47],"111":[50.6,1.64,5.52,19.47],"112":[56.03,1.64,5.52,19.47],"113":[67.24,1.64,5.52,19.47],"114":[72.84,1.64,5.52,19.47],"115":[78.45,1.64,5.52,19.47],"116":[83.88,1.64,5.52,19.47],"106":[20.26,7.79,5.52,13.32],"105":[14.66,21.52,8.36,5.94],"104":[11.9,28.07,8.36,5.94],"103":[9.14,34.63,8.36,5.94],"102":[6.38,41.19,8.36,5.94],"101":[3.62,47.75,8.36,5.94],"121":[34.05,27.66,5.52,19.47],"122":[39.66,27.66,5.52,19.47],"123":[45.09,27.66,5.52,19.47],"120":[14.66,60.45,8.36,6.15],"119":[11.9,67.01,8.28,6.35]};
+let selRoom = '';
+$('#map').insertAdjacentHTML('beforeend', ROOMS.map(r => { const p = ROOM_POS[r[0]]; return p ? `<button type="button" data-room="${r[0]}" aria-label="${r[0]}호" style="left:${p[0]}%;top:${p[1]}%;width:${p[2]}%;height:${p[3]}%"></button>` : ''; }).join(''));
+function pickRoom(no, scroll){
+  const r = ROOMS.find(x => x[0] === no); if (!r) return;
+  selRoom = no;
+  document.querySelectorAll('#map button').forEach(b => b.classList.toggle('sel', b.dataset.room === no));
+  document.querySelectorAll('#rooms li[data-room]').forEach(li => li.classList.toggle('sel', li.dataset.room === no));
+  const [, lab] = TAGS[r[1]];
+  $('#pick').innerHTML = `<span class="no">${no}호</span><span class="muted">${no==='106'?'교사+2반 여':lab} · ${r[2].split(',').length}명</span><div class="who">${esc(r[2])}</div>`;
+  if (scroll){
+    const top = $('#floor').getBoundingClientRect().top + window.scrollY - document.querySelector('.tabs').offsetHeight - 8;
+    window.scrollTo({top, behavior: 'smooth'});
+  }
+}
+// 검색·필터에 걸린 방은 배치도에 테두리로 표시
+function markHits(){
+  const shown = new Set([...document.querySelectorAll('#rooms li[data-room]')].map(li => li.dataset.room));
+  const filtered = $('#q').value.trim() || flt !== 'all';
+  document.querySelectorAll('#map button').forEach(b => b.classList.toggle('hit', filtered && shown.has(b.dataset.room)));
+  if (filtered && shown.size === 1) pickRoom([...shown][0], false);
+}
+$('#map').addEventListener('click', e => { const b = e.target.closest('button'); if (b) pickRoom(b.dataset.room, false); });
+$('#rooms').addEventListener('click', e => { const li = e.target.closest('li[data-room]'); if (li) pickRoom(li.dataset.room, true); });
+$('#q').addEventListener('input', () => { renderRooms(); markHits(); });
 $('#flt').addEventListener('click', e => {
   const b = e.target.closest('button'); if(!b) return;
   flt = b.dataset.f;
   document.querySelectorAll('#flt button').forEach(x => x.setAttribute('aria-pressed', x===b));
-  renderRooms();
+  renderRooms(); markHits();
 });
 renderRooms();
 
