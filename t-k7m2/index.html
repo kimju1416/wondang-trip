@@ -76,6 +76,8 @@ h2{font-size:20px;font-weight:700;margin-bottom:10px;letter-spacing:-.01em}
 .tl li.now{background:var(--pt-soft)}
 .tl li.now .tm{color:var(--pt)}
 .tl li.done{opacity:.5}
+.tl li.next .tm{color:var(--pt)}
+.badge.nx{background:var(--navy)}
 .badge{display:inline-block;font-size:11px;font-weight:700;color:#fff;background:var(--pt);border-radius:5px;padding:1px 6px;margin-left:6px;vertical-align:2px}
 
 .note{background:var(--warn-bg);border-radius:var(--r2);padding:14px 16px;font-size:14px}
@@ -417,25 +419,26 @@ footer{text-align:center;font-size:12px;color:var(--sub);padding:0 16px 32px}
 <script>
 const DAYS = [
   { date:'2026-10-01', items:[
-    ['08:00','08:30','인원 점검 후 출발','출발 전 건강상태 확인 · 안전벨트 확인'],
-    ['08:30','10:00','충주휴게소 휴식 후 출발',''],
-    ['10:00','11:40','에버랜드 도착 (제1주차장)','도착 전 안전교육 · QR·스마트 줄서기 · 밀쿠폰 12,000원(금액 내 메뉴 변경·추가금 가능, 빠른 시간 안에 사용)'],
-    ['11:40','12:10','에버랜드 입장 · 반별 단체 사진',''],
-    ['12:10','21:30','자유시간 · 중식·석식','퍼레이드·불꽃놀이 관람'],
-    ['21:30','22:20','숙소 이동 및 도착','화성 푸르미르 호텔 · 하차 전 안전교육, 조식 시간 안내 · 입구 단체사진 후 반별 집합'],
-    ['22:20','23:30','방 배정 후 자유시간','객실 키 배부(각반 담임)'],
-    ['23:30','24:00','담임교사 점호 · 안전교육',''],
-    ['24:00','31:00','취침','00–06시 2시간 교대 순찰'],
+    ['08:00','08:30','인원 점검 후 출발','출발 전 건강상태 확인 · 안전벨트 확인','08:00~08:30'],
+    ['10:00','11:40','충주휴게소 휴식 후 출발','','10:00'],
+    ['11:40','12:10','에버랜드 도착 (제1주차장)','도착 전 안전교육 · QR·스마트 줄서기 · 밀쿠폰 12,000원(금액 내 메뉴 변경·추가금 가능, 빠른 시간 안에 사용)','11:40'],
+    ['12:10','12:30','에버랜드 입장 · 반별 단체 사진','','12:10'],
+    ['12:30','21:30','자유시간 · 중식·석식','퍼레이드·불꽃놀이 관람','12:10~21:30'],
+    ['21:30','22:20','숙소 이동 및 도착','화성 푸르미르 호텔 · 하차 전 안전교육, 조식 시간 안내 · 입구 단체사진 후 반별 집합','22:20'],
+    ['22:20','23:30','방 배정 후 자유시간','객실 키 배부(각반 담임)','~23:30'],
+    ['23:30','24:00','담임교사 점호 · 안전교육','','23:30'],
+    ['24:00','31:00','취침','00–06시 2시간 교대 순찰','24:00'],
   ], note:''},
   { date:'2026-10-02', items:[
-    ['07:00','07:20','기상 및 세면',''],
-    ['07:20','08:20','조식 및 퇴실 준비','알레르기 학생 확인'],
-    ['08:20','09:00','객실 카드 반납 · 차량 탑승','분실물 확인'],
-    ['09:00','09:40','한국민속촌으로 출발','도착 전 안전교육 · 밀쿠폰 10,000원 · 퇴장 후 재입장 불가 안내'],
-    ['09:40','10:00','한국민속촌 입장','입장 후 담임 지도하에 반별 단체 사진'],
-    ['10:00','13:30','자유시간 및 중식','공연 11:00 어서오시오! · 12:00 삼도판굿 · 12:30 소리 따라 걷는 민속촌'],
-    ['13:30','16:40','인원 점검 후 출발','휴게소 휴식'],
-    ['16:40','17:30','학교 도착 · 귀가 지도',''],
+    ['07:00','07:20','기상 및 세면','','07:00'],
+    ['07:20','08:20','조식 및 퇴실 준비','알레르기 학생 확인','07:20~08:20'],
+    ['08:20','09:00','객실 카드 반납 · 차량 탑승','분실물 확인','09:00'],
+    ['09:00','10:00','한국민속촌으로 출발','도착 전 안전교육 · 밀쿠폰 10,000원 · 퇴장 후 재입장 불가 안내','09:00~09:40'],
+    ['10:00','10:15','한국민속촌 입장','입장 후 담임 지도하에 반별 단체 사진','10:00'],
+    ['10:15','13:30','자유시간 및 중식','공연 11:00 어서오시오! · 12:00 삼도판굿 · 12:30 소리 따라 걷는 민속촌','10:00~13:30'],
+    ['13:30','16:40','차량 탑승 · 인원 점검 후 출발','휴게소 휴식','13:30~16:40'],
+    ['16:40','16:45','학교 도착','','16:40'],
+    ['16:45','17:30','안전한 귀가 지도','','16:40~17:30'],
   ], note:''},
 ];
 const ROOMS = [
@@ -508,8 +511,10 @@ function where(){
   const n = new Date();
   for (let d=0; d<DAYS.length; d++){
     const mins = (n - new Date(DAYS[d].date+'T00:00:00'))/60000, it = DAYS[d].items;
-    if (mins >= toMin(it[0][0]) - 60 && mins < toMin(it[it.length-1][1]))
-      return { d, idx: it.findIndex(x => mins < toMin(x[1])) };
+    if (mins >= toMin(it[0][0]) - 60 && mins < toMin(it[it.length-1][1])){
+      const idx = it.findIndex(x => mins < toMin(x[1]));
+      return { d, idx, gap: mins < toMin(it[idx][0]) };   // gap: 다음 일정 전(이동 중)
+    }
   }
   return null;
 }
@@ -518,7 +523,9 @@ function renderStatus(){
   const w = where(), el = $('#status'), n = new Date();
   if (w){
     const it = DAYS[w.d].items[w.idx];
-    el.innerHTML = `<b>${w.d+1}일차</b><span>지금: <strong>${it[2]}</strong> (~${it[1]==='31:00'?'07:00':it[1]})</span>`;
+    el.innerHTML = w.gap
+      ? `<b>${w.d+1}일차</b><span>${w.idx===0?'집합 전':'버스 이동 중'} · 다음: <strong>${it[2]}</strong> (${it[4]})</span>`
+      : `<b>${w.d+1}일차</b><span>지금: <strong>${it[2]}</strong> (${it[4]})</span>`;
   } else if (n < new Date('2026-10-01T08:00:00')){
     const dd = Math.ceil((new Date('2026-10-01T00:00:00') - new Date(n.getFullYear(),n.getMonth(),n.getDate()))/86400000);
     el.innerHTML = `<b>D-${dd}</b><span>10.1(목) 08:00 학교 집합 · 08:30 출발</span>`;
@@ -535,9 +542,10 @@ function renderDay(d){
   const w = where();
   $('#tl').innerHTML = DAYS[d].items.map((x,i) => {
     let cls = '';
-    if (w && w.d===d){ if (i<w.idx) cls='done'; else if (i===w.idx) cls='now'; }
+    if (w && w.d===d){ if (i<w.idx) cls='done'; else if (i===w.idx) cls=w.gap?'next':'now'; }
     else if (w && w.d>d) cls='done';
-    return `<li class="${cls}"><div class="tm">${x[0]}</div><div><div class="ev">${x[2]}${cls==='now'?'<span class="badge">지금</span>':''}</div>${x[3]?`<div class="nt">${x[3]}</div>`:''}</div></li>`;
+    const bd = cls==='now'?'<span class="badge">지금</span>':cls==='next'?'<span class="badge nx">다음</span>':'';
+    return `<li class="${cls}"><div class="tm">${x[4].replace(/(\d)~/,'$1<br>~')}</div><div><div class="ev">${x[2]}${bd}</div>${x[3]?`<div class="nt">${x[3]}</div>`:''}</div></li>`;
   }).join('');
 }
 $('#daySeg').addEventListener('click', e => { const b=e.target.closest('button'); if(b) renderDay(+b.dataset.d); });

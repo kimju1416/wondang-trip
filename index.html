@@ -82,6 +82,8 @@ h2{font-size:20px;font-weight:700;margin-bottom:10px;letter-spacing:-.01em}
 .tl li.now{background:var(--pt-soft)}
 .tl li.now .tm{color:var(--pt)}
 .tl li.done{opacity:.5}
+.tl li.next .tm{color:var(--pt)}
+.badge.nx{background:var(--navy)}
 .badge{display:inline-block;font-size:11px;font-weight:700;color:#fff;background:var(--pt);border-radius:5px;padding:1px 6px;margin-left:6px;vertical-align:2px}
 
 .note{background:var(--warn-bg);border-radius:var(--r2);padding:14px 16px;font-size:14px}
@@ -363,15 +365,15 @@ footer{text-align:center;font-size:12px;color:var(--sub);padding:0 16px 32px}
 // ── 일정 데이터 (계획서 기준) ──
 const DAYS = [
   { date:'2026-10-01', items:[
-    ['08:00','08:30','인원 점검 후 출발','학교 · 버스 타면 안전벨트'],
-    ['08:30','10:00','충주휴게소 휴식',''],
-    ['10:00','11:40','에버랜드 도착','제1주차장 · 도착 전 버스 안 안전교육'],
-    ['11:40','12:10','에버랜드 입장 · 반별 단체 사진',''],
-    ['12:10','21:30','에버랜드 자유시간','점심·저녁 밀쿠폰 · 퍼레이드와 불꽃놀이 관람'],
-    ['21:30','22:20','숙소로 이동','버스 내리기 전 안전교육'],
-    ['22:20','23:30','방 배정 후 자유시간',''],
-    ['23:30','24:00','담임 선생님 점호 · 안전교육',''],
-    ['24:00','31:00','취침',''],
+    ['08:00','08:30','인원 점검 후 출발','학교 · 버스 타면 안전벨트','08:00~08:30'],
+    ['10:00','11:40','충주휴게소 휴식 후 출발','','10:00'],
+    ['11:40','12:10','에버랜드 도착','제1주차장 · 도착 전 버스 안 안전교육','11:40'],
+    ['12:10','12:30','에버랜드 입장 · 반별 단체 사진','','12:10'],
+    ['12:30','21:30','에버랜드 자유시간','점심·저녁 밀쿠폰 · 퍼레이드와 불꽃놀이 관람','12:10~21:30'],
+    ['21:30','22:20','숙소 이동 및 도착','버스 내리기 전 안전교육','22:20'],
+    ['22:20','23:30','방 배정 후 자유시간','','~23:30'],
+    ['23:30','24:00','담임 선생님 점호 · 안전교육','','23:30'],
+    ['24:00','31:00','취침','','24:00'],
   ], note:`<div class="note"><b>1일차 알림</b><ul>
     <li>출발 전 담임 선생님이 건강 상태를 확인해요.</li>
     <li>유튜브 '현장체험학습 안전교육' 영상을 보고 반 단톡방에 댓글을 달아요.</li>
@@ -379,14 +381,15 @@ const DAYS = [
     <li>숙소에 도착하면 입구에서 단체사진을 찍고, 들어가서 반별로 모여요.</li>
   </ul></div>`},
   { date:'2026-10-02', items:[
-    ['07:00','07:20','기상 · 세면',''],
-    ['07:20','08:20','아침 식사 · 퇴실 준비','두고 가는 물건 없는지 확인'],
-    ['08:20','09:00','객실 카드 반납 · 버스 탑승',''],
-    ['09:00','09:40','한국민속촌으로 이동','도착 전 버스 안 안전교육'],
-    ['09:40','10:00','한국민속촌 입장 · 반별 단체 사진','퇴장하면 다시 들어갈 수 없어요'],
-    ['10:00','13:30','자유시간 · 점심','밀쿠폰 10,000원'],
-    ['13:30','16:40','인원 점검 후 학교로 출발','중간에 휴게소 휴식'],
-    ['16:40','17:30','학교 도착 · 귀가','안전하게 집으로'],
+    ['07:00','07:20','기상 · 세면','','07:00'],
+    ['07:20','08:20','아침 식사 · 퇴실 준비','두고 가는 물건 없는지 확인','07:20~08:20'],
+    ['08:20','09:00','객실 카드 반납 · 버스 탑승','','09:00'],
+    ['09:00','10:00','한국민속촌으로 출발','도착 전 버스 안 안전교육','09:00~09:40'],
+    ['10:00','10:15','한국민속촌 입장 · 반별 단체 사진','퇴장하면 다시 들어갈 수 없어요','10:00'],
+    ['10:15','13:30','자유시간 · 점심','밀쿠폰 10,000원','10:00~13:30'],
+    ['13:30','16:40','인원 점검 후 학교로 출발','중간에 휴게소 휴식','13:30~16:40'],
+    ['16:40','16:45','학교 도착','','16:40'],
+    ['16:45','17:30','안전한 귀가','','16:40~17:30'],
   ], note:`<div class="card"><div class="lbl">민속촌 공연 시간</div>
     <ul class="dot"><li><b>11:00</b> 어서오시오! (손님맞이)</li><li><b>12:00</b> 삼도판굿</li><li><b>12:30</b> 소리 따라 걷는 민속촌</li></ul></div>
     <div class="card" style="margin-top:10px"><div class="lbl">2일차 아침 식단 · 알레르기 주의</div>
@@ -416,7 +419,7 @@ function where(){
     const it = DAYS[d].items;
     if (mins >= toMin(it[0][0]) - 60 && mins < toMin(it[it.length-1][1])){
       let idx = it.findIndex(x => mins < toMin(x[1]));
-      return { d, idx, mins };
+      return { d, idx, mins, gap: mins < toMin(it[idx][0]) };   // gap: 다음 일정 전(이동 중)
     }
   }
   return null;
@@ -428,7 +431,9 @@ function renderStatus(){
   const start = new Date('2026-10-01T08:00:00'), end = new Date('2026-10-02T17:30:00');
   if (w){
     const it = DAYS[w.d].items[w.idx];
-    el.innerHTML = `<b>${w.d+1}일차</b><span>지금은 <strong>${it[2]}</strong> 시간이에요.</span>`;
+    el.innerHTML = w.gap
+      ? `<b>${w.d+1}일차</b><span>${w.idx===0?'곧 시작해요.':'버스로 이동 중이에요.'} 다음은 <strong>${it[4]} ${it[2]}</strong></span>`
+      : `<b>${w.d+1}일차</b><span>지금은 <strong>${it[2]}</strong> 시간이에요.</span>`;
   } else if (n < start){
     const dd = Math.ceil((new Date('2026-10-01T00:00:00') - new Date(n.getFullYear(),n.getMonth(),n.getDate()))/86400000);
     el.innerHTML = `<b>D-${dd}</b><span>${dd===1?'내일':'10월 1일'} 아침 <strong>08:00</strong>까지 학교에 모여요. 늦지 않게 와 주세요.</span>`;
@@ -445,10 +450,10 @@ function renderDay(d){
   const w = where();
   $('#tl').innerHTML = DAYS[d].items.map((x,i) => {
     let cls = '';
-    if (w && w.d===d){ if (i<w.idx) cls='done'; else if (i===w.idx) cls='now'; }
+    if (w && w.d===d){ if (i<w.idx) cls='done'; else if (i===w.idx) cls=w.gap?'next':'now'; }
     else if (w && w.d>d) cls='done';
-    const tm = x[0]==='24:00' ? '24:00' : x[0];
-    return `<li class="${cls}"><div class="tm">${tm}</div><div><div class="ev">${x[2]}${cls==='now'?'<span class="badge">지금</span>':''}</div>${x[3]?`<div class="nt">${x[3]}</div>`:''}</div></li>`;
+    const bd = cls==='now'?'<span class="badge">지금</span>':cls==='next'?'<span class="badge nx">다음</span>':'';
+    return `<li class="${cls}"><div class="tm">${x[4].replace(/(\d)~/,'$1<br>~')}</div><div><div class="ev">${x[2]}${bd}</div>${x[3]?`<div class="nt">${x[3]}</div>`:''}</div></li>`;
   }).join('');
   $('#dayNote').innerHTML = DAYS[d].note;
 }
