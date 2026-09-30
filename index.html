@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>원당중 2학년 수학여행 안내</title>
+<meta name="description" content="2026 구미원당중학교 2학년 수학여행 일정·안전 안내 (10.1~10.2 에버랜드·한국민속촌)">
+<meta property="og:title" content="원당중 2학년 수학여행 안내">
+<meta property="og:description" content="10.1(목)~10.2(금) 에버랜드 · 한국민속촌 — 일정표와 안전 수칙">
+<meta property="og:image" content="https://kimju1416.github.io/wondang-trip/img/og.jpg">
+<meta name="theme-color" content="#1F3A5F">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{
+  --pt:#E05A1E; --pt-d:#C24A15; --pt-soft:#FCEBDD;
+  --navy:#1F3A5F;
+  --bg:#FBF6F1; --card:#fff; --line:#EFE2D6;
+  --tx:#2E2418; --sub:#8A796A;
+  --ok:#1D7A4D; --ok-bg:#E7F3EC; --warn:#B26B0F; --warn-bg:#FBF0DE; --err:#C0392B; --err-bg:#F9E8E6;
+  --r1:10px; --r2:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{overflow-x:hidden}
+body{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;background:var(--bg);color:var(--tx);font-size:15px;line-height:1.6;word-break:keep-all;overflow-wrap:anywhere;-webkit-text-size-adjust:100%}
+a{color:inherit}
+img{max-width:100%;display:block}
+
+/* 헤더 */
+.hero{position:relative;background:#F6EFE3;overflow:hidden}
+.hero img{width:100%;aspect-ratio:3/2;object-fit:cover;object-position:center 70%}
+.hero-t{position:absolute;left:0;right:0;top:0;padding:18px 20px 0}
+.hero-k{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.04em;color:#fff;background:var(--navy);padding:3px 9px;border-radius:6px}
+.hero h1{margin-top:8px;font-size:clamp(22px,6.6vw,34px);line-height:1.25;font-weight:800;color:var(--navy);letter-spacing:-.02em}
+.hero p{margin-top:4px;font-size:clamp(13px,3.6vw,16px);font-weight:600;color:#3B4F6B}
+@media (min-width:640px){.hero img{aspect-ratio:21/9}}
+
+/* 탭 */
+.tabs{position:sticky;top:0;z-index:20;display:grid;grid-template-columns:repeat(4,1fr);background:var(--bg);border-bottom:1px solid var(--line)}
+.tabs button{appearance:none;border:0;background:none;font:inherit;font-size:15px;font-weight:600;color:var(--sub);height:50px;border-bottom:3px solid transparent;cursor:pointer}
+.tabs button[aria-selected=true]{color:var(--pt);border-bottom-color:var(--pt)}
+
+main{max-width:720px;margin:0 auto;padding:16px 16px 60px}
+.pane{display:none}
+.pane.on{display:block}
+.sec{margin-top:28px}
+.sec:first-child{margin-top:4px}
+.lbl{font-size:13px;font-weight:600;color:var(--sub);letter-spacing:.02em;margin-bottom:8px}
+h2{font-size:20px;font-weight:700;margin-bottom:10px;letter-spacing:-.01em}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r2);padding:16px}
+.muted{color:var(--sub)}
+.small{font-size:13px}
+
+/* 상태 띠 */
+.status{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:var(--r2);padding:14px 16px}
+.status b{font-size:26px;font-weight:800;color:var(--pt);white-space:nowrap}
+.status span{font-size:14px;color:var(--tx)}
+
+/* 요약 */
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.fact{background:var(--card);border:1px solid var(--line);border-radius:var(--r2);padding:12px 14px}
+.fact dt{font-size:12px;color:var(--sub);font-weight:600}
+.fact dd{font-size:15px;font-weight:700;margin-top:2px}
+
+/* 날짜 전환 */
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:#F1E6DB;padding:4px;border-radius:12px;margin-bottom:12px}
+.seg button{appearance:none;border:0;font:inherit;font-weight:600;font-size:14px;height:44px;border-radius:9px;background:none;color:var(--sub);cursor:pointer}
+.seg button[aria-pressed=true]{background:#fff;color:var(--tx);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+
+/* 타임라인 */
+.tl{list-style:none;background:var(--card);border:1px solid var(--line);border-radius:var(--r2);overflow:hidden}
+.tl li{display:grid;grid-template-columns:74px 1fr;gap:10px;padding:13px 16px;border-top:1px solid var(--line)}
+.tl li:first-child{border-top:0}
+.tl .tm{font-size:14px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--navy)}
+.tl .ev{font-size:15px;font-weight:600}
+.tl .nt{font-size:13px;color:var(--sub);margin-top:2px}
+.tl li.now{background:var(--pt-soft)}
+.tl li.now .tm{color:var(--pt)}
+.tl li.done{opacity:.5}
+.badge{display:inline-block;font-size:11px;font-weight:700;color:#fff;background:var(--pt);border-radius:5px;padding:1px 6px;margin-left:6px;vertical-align:2px}
+
+.note{background:var(--warn-bg);border-radius:var(--r2);padding:14px 16px;font-size:14px}
+.note b{color:var(--warn)}
+.note ul{padding-left:18px;margin-top:4px}
+.note li+li{margin-top:4px}
+
+ul.dot{list-style:none}
+ul.dot li{position:relative;padding-left:14px}
+ul.dot li+li{margin-top:8px}
+ul.dot li::before{content:"";position:absolute;left:0;top:.7em;width:5px;height:5px;border-radius:50%;background:var(--pt)}
+
+/* 전화 */
+.call{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.call a{display:flex;flex-direction:column;justify-content:center;min-height:64px;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:var(--r2);padding:10px 14px}
+.call a small{font-size:12px;color:var(--sub);font-weight:600}
+.call a strong{font-size:16px}
+.call a em{font-style:normal;font-size:13px;color:var(--pt);font-weight:700;font-variant-numeric:tabular-nums}
+.call a.urgent{background:var(--err-bg);border-color:#F0CFCB}
+.call a.urgent strong{color:var(--err)}
+
+.steps{counter-reset:s;list-style:none}
+.steps li{counter-increment:s;position:relative;padding-left:34px;min-height:26px}
+.steps li+li{margin-top:10px}
+.steps li::before{content:counter(s);position:absolute;left:0;top:0;width:24px;height:24px;border-radius:50%;background:var(--navy);color:#fff;font-size:13px;font-weight:700;display:grid;place-items:center}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips span{font-size:13px;font-weight:600;background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 10px}
+
+/* 체크리스트 */
+.chk{list-style:none;background:var(--card);border:1px solid var(--line);border-radius:var(--r2);overflow:hidden}
+.chk li{border-top:1px solid var(--line)}
+.chk li:first-child{border-top:0}
+.chk label{display:flex;gap:12px;align-items:flex-start;padding:12px 16px;min-height:48px;cursor:pointer}
+.chk input{appearance:none;flex:none;width:22px;height:22px;border:2px solid #CDBBA9;border-radius:6px;margin-top:1px;display:grid;place-items:center;background:#fff}
+.chk input:checked{background:var(--pt);border-color:var(--pt)}
+.chk input:checked::after{content:"";width:6px;height:11px;border:solid #fff;border-width:0 2.5px 2.5px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.chk input:checked + span{color:var(--sub);text-decoration:line-through}
+.prog{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.prog b{font-size:13px;color:var(--pt)}
+
+/* 미션 */
+.ms{background:var(--card);border:1px solid var(--line);border-radius:var(--r2);padding:16px;margin-top:10px}
+.ms-h{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.ms-h h3{font-size:16px;font-weight:700}
+.ms-h h3 small{display:block;font-size:12px;color:var(--pt);font-weight:700;letter-spacing:.04em}
+.ms-h .pt{font-size:20px;font-weight:800;color:var(--navy);white-space:nowrap}
+.ms-h .pt small{font-size:12px;color:var(--sub);font-weight:600}
+.ms p{font-size:14px;color:var(--sub);margin-top:4px}
+.ms .chk{border:0;border-top:1px solid var(--line);border-radius:0;margin:12px -16px -16px}
+
+table.menu{width:100%;border-collapse:collapse;font-size:14px}
+table.menu th{text-align:left;font-weight:700;width:64px;vertical-align:top;padding:8px 8px 8px 0;color:var(--navy)}
+table.menu td{padding:8px 0;border-top:1px solid var(--line)}
+table.menu tr:first-child td{border-top:0}
+table.menu th{border-top:1px solid var(--line)}
+table.menu tr:first-child th{border-top:0}
+.var{color:var(--err);font-size:12px;font-weight:600}
+
+footer{text-align:center;font-size:12px;color:var(--sub);padding:0 16px 32px}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <img src="img/hero.jpg" alt="에버랜드와 한국민속촌을 잇는 가을 여행길 그림">
+  <div class="hero-t">
+    <span class="hero-k">구미원당중 2학년</span>
+    <h1>2026 수학여행</h1>
+    <p>10.1(목) – 10.2(금) · 에버랜드 · 한국민속촌</p>
+  </div>
+</header>
+
+<nav class="tabs" role="tablist">
+  <button role="tab" aria-selected="true" data-t="plan">일정</button>
+  <button role="tab" aria-selected="false" data-t="safe">안전</button>
+  <button role="tab" aria-selected="false" data-t="pack">준비물</button>
+  <button role="tab" aria-selected="false" data-t="mission">미션</button>
+</nav>
+
+<main>
+<!-- 일정 -->
+<section class="pane on" id="plan">
+  <div class="sec">
+    <div class="status" id="status"></div>
+  </div>
+  <div class="sec">
+    <dl class="facts">
+      <div class="fact"><dt>집합</dt><dd>10.1(목) 08:00 학교</dd></div>
+      <div class="fact"><dt>학교 도착</dt><dd>10.2(금) 16:40</dd></div>
+      <div class="fact"><dt>2학년 1반</dt><dd>1호차 · 한유정 쌤</dd></div>
+      <div class="fact"><dt>2학년 2반</dt><dd>2호차 · 김도근 쌤</dd></div>
+    </dl>
+  </div>
+  <div class="sec">
+    <div class="seg" id="daySeg">
+      <button aria-pressed="true" data-d="0">1일차 · 10.1(목)</button>
+      <button aria-pressed="false" data-d="1">2일차 · 10.2(금)</button>
+    </div>
+    <ol class="tl" id="tl"></ol>
+  </div>
+  <div class="sec" id="dayNote"></div>
+</section>
+
+<!-- 안전 -->
+<section class="pane" id="safe">
+  <div class="sec">
+    <h2>급할 때 바로 전화</h2>
+    <div class="call">
+      <a href="tel:010-3507-0153"><small>2-1 담임</small><strong>한유정 선생님</strong><em>010-3507-0153</em></a>
+      <a href="tel:010-2851-6780"><small>2-2 담임</small><strong>김도근 선생님</strong><em>010-2851-6780</em></a>
+      <a class="urgent" href="tel:119"><small>불·다쳤을 때</small><strong>119</strong></a>
+      <a class="urgent" href="tel:112"><small>범죄·위험</small><strong>112</strong></a>
+    </div>
+    <p class="small muted" style="margin-top:8px">담임 선생님과 연락이 안 되면 다른 인솔 선생님께 연락하세요. 버스 탑승 장소 등 버스 관련은 인솔 선생님이 안내합니다.</p>
+  </div>
+
+  <div class="sec">
+    <h2>길을 잃었을 때</h2>
+    <div class="card">
+      <ol class="steps">
+        <li>그 자리에 멈추고 담임 선생님께 전화합니다.</li>
+        <li>에버랜드라면 가장 가까운 <b>집결지</b>로 가서 기다립니다.</li>
+        <li>연락이 안 되면 직원이나 가까운 파출소에 도움을 요청합니다.</li>
+      </ol>
+      <div class="lbl" style="margin-top:14px">에버랜드 집결지</div>
+      <div class="chips">
+        <span>알파인 의무실</span><span>교사 휴게실</span><span>정문 의무실</span><span>유아 휴게실</span><span>공원교</span><span>평석교</span><span>목교</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2>꼭 지켜요</h2>
+    <div class="card">
+      <ul class="dot">
+        <li>집합 시간과 기상 시간을 지키고, 항상 우리 반 위치를 확인해요. 인원 점검에 바로 대답해요.</li>
+        <li>혼자 다니지 않고 모둠(3~4명)으로 움직여요. 정해진 구역 밖으로 나가지 않아요.</li>
+        <li>버스에 타면 안전벨트를 꼭 매요. 달리는 버스 안에서 일어나지 않아요.</li>
+        <li>작은 사고라도 생기면 바로 선생님께 알려요. 몸이 아프면 참지 말고 담임 선생님께 연락해요.</li>
+        <li>놀이기구의 키·안전 규칙을 지키고, 줄 서는 곳에서 새치기하지 않아요.</li>
+        <li>불량식품은 먹지 않고, 알레르기가 있으면 성분을 먼저 확인해요.</li>
+        <li>큰 소리·야유로 다른 사람에게 불편을 주지 않아요. 다른 사람 얼굴이 사진에 나오지 않게 배려해요.</li>
+        <li>에버랜드·민속촌은 <b>퇴장하면 다시 들어갈 수 없어요.</b></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2>숙소에서</h2>
+    <div class="card">
+      <ul class="dot">
+        <li>배정된 방에서만 지내고 다른 방에 들어가지 않아요.</li>
+        <li>점호 후 24:00에는 취침해요. 밤에 방 밖으로 나가지 않아요.</li>
+        <li>불이 나면 엘리베이터 대신 계단으로, 몸을 낮추고 젖은 수건으로 입을 막아요.</li>
+        <li>방을 나갈 때 소지품을 꼭 챙기고, 객실 카드는 담임 선생님께 반납해요.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2>아플 때 · 감염병 예방</h2>
+    <div class="card">
+      <ul class="dot">
+        <li>출발 전 37.5℃ 이상 열이 나거나 감염병이 의심되면 등교하지 말고 담임 선생님께 연락해요.</li>
+        <li>손을 자주 씻고, 기침할 땐 옷소매로 가리고 마스크를 써요.</li>
+        <li>여행 중 열이 나거나 아프면 바로 담임 선생님께 알려요.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 준비물 -->
+<section class="pane" id="pack">
+  <div class="sec">
+    <div class="prog"><h2 style="margin:0">챙길 것</h2><b id="packCnt"></b></div>
+    <ul class="chk" id="packList"></ul>
+    <p class="small muted" style="margin-top:8px">체크한 내용은 이 폰에만 저장돼요.</p>
+  </div>
+  <div class="sec">
+    <div class="note">
+      <b>가져오지 않아요</b>
+      <ul>
+        <li>샌들·슬리퍼·구두 (운동화만)</li>
+        <li>컵라면, 위험한 물건·화기·장난감</li>
+        <li>잃어버리면 곤란한 비싼 물건</li>
+        <li>학생이 가지고 있으면 안 되는 물건</li>
+      </ul>
+    </div>
+  </div>
+  <div class="sec">
+    <h2>식사와 용돈</h2>
+    <div class="card">
+      <ul class="dot">
+        <li>1일차 점심·저녁, 2일차 아침·점심은 학교에서 지원해요. 용돈은 필요한 만큼만.</li>
+        <li>에버랜드 밀쿠폰 <b>12,000원</b> · 민속촌 밀쿠폰 <b>10,000원</b> (QR). 금액 안에서 메뉴를 바꿀 수 있고, 추가 금액을 내면 다른 메뉴도 가능해요.</li>
+        <li>입장권과 밀쿠폰이 폰 QR이라 <b>충전기·보조배터리</b>는 필수예요.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 미션 -->
+<section class="pane" id="mission">
+  <div class="sec">
+    <div class="card">
+      <div class="lbl">모둠 미션 규칙</div>
+      <ul class="dot">
+        <li>모둠은 3~4명이 함께 움직여요.</li>
+        <li>사진 미션은 가능하면 모둠원 모두 등장해요.</li>
+        <li>안전·질서·시설 이용 규칙을 가장 먼저 지켜요.</li>
+        <li>다른 사람의 얼굴이 사진에 나오지 않게 배려해요.</li>
+      </ul>
+      <p class="small muted" style="margin-top:10px">반별 최우수 1팀·우수 1팀에 상품권을 드려요. 대표 사진 2~3장은 학교에 돌아와 제출할 수 있게 보관하세요.</p>
+    </div>
+  </div>
+  <div class="sec" id="msList"></div>
+</section>
+</main>
+
+<footer>구미원당중학교 2학년 · 모르는 것은 담임 선생님께 물어보세요</footer>
+
+<script>
+// ── 일정 데이터 (계획서 기준) ──
+const DAYS = [
+  { date:'2026-10-01', items:[
+    ['08:00','08:30','인원 점검 후 출발','학교 · 버스 타면 안전벨트'],
+    ['08:30','10:00','충주휴게소 휴식',''],
+    ['10:00','11:40','에버랜드 도착','제1주차장 · 도착 전 버스 안 안전교육'],
+    ['11:40','12:10','에버랜드 입장 · 반별 단체 사진',''],
+    ['12:10','21:30','에버랜드 자유시간','점심·저녁 밀쿠폰 · 퍼레이드와 불꽃놀이 관람'],
+    ['21:30','22:20','숙소로 이동','버스 내리기 전 안전교육'],
+    ['22:20','23:30','방 배정 후 자유시간',''],
+    ['23:30','24:00','담임 선생님 점호 · 안전교육',''],
+    ['24:00','31:00','취침',''],
+  ], note:`<div class="note"><b>1일차 알림</b><ul>
+    <li>출발 전 담임 선생님이 건강 상태를 확인해요.</li>
+    <li>유튜브 '현장체험학습 안전교육' 영상을 보고 반 단톡방에 댓글을 달아요.</li>
+    <li>에버랜드 입장 QR을 미리 받고 스마트 줄서기 방법을 확인해요.</li>
+  </ul></div>`},
+  { date:'2026-10-02', items:[
+    ['07:00','07:20','기상 · 세면',''],
+    ['07:20','08:20','아침 식사 · 퇴실 준비','두고 가는 물건 없는지 확인'],
+    ['08:20','09:00','객실 카드 반납 · 버스 탑승',''],
+    ['09:00','10:00','한국민속촌으로 이동','도착 전 버스 안 안전교육'],
+    ['10:00','10:10','한국민속촌 입장 · 반별 단체 사진',''],
+    ['10:10','13:30','자유시간 · 점심','밀쿠폰 10,000원'],
+    ['13:30','16:40','인원 점검 후 학교로 출발','중간에 휴게소 휴식'],
+    ['16:40','17:30','학교 도착 · 귀가','안전하게 집으로'],
+  ], note:`<div class="card"><div class="lbl">민속촌 공연 시간</div>
+    <ul class="dot"><li><b>11:00</b> 어서오시오! (손님맞이)</li><li><b>12:00</b> 삼도판굿</li><li><b>12:30</b> 소리 따라 걷는 민속촌</li></ul></div>
+    <div class="card" style="margin-top:10px"><div class="lbl">2일차 아침 식단 · 알레르기 주의</div>
+    <table class="menu">
+      <tr><th>샐러드</th><td>양상추, 라디치오, 방울토마토, 비타민, 드레싱 3종<span class="var"> 변동</span>, 꽃맛살 샐러드<span class="var"> 변동</span>, 감자 샐러드<span class="var"> 변동</span></td></tr>
+      <tr><th>따뜻한</th><td>스크램블, 베이컨, 치폴라타, 감자튀김(케첩), 가라아게, 흰밥, 한식 국<span class="var"> 변동</span>, 스프<span class="var"> 변동</span></td></tr>
+      <tr><th>햄·치즈</th><td>본레스 햄, 비어 햄, 아메리칸·스위스·에멘탈·스모크 치즈</td></tr>
+      <tr><th>빵</th><td>플레인 식빵, 모닝빵, 바게트</td></tr>
+      <tr><th>시리얼</th><td>초코첵스, 아몬드 후레이크, 후르트 링</td></tr>
+      <tr><th>요거트</th><td>플레인 요거트, 견과류 4종<span class="var"> 변동</span></td></tr>
+      <tr><th>과일</th><td>파인애플, 오렌지, 바나나</td></tr>
+      <tr><th>반찬</th><td>배추김치, 나물 또는 볶음<span class="var"> 변동</span>, 오징어 젓갈, 김</td></tr>
+    </table></div>`},
+];
+
+const $ = s => document.querySelector(s);
+const toMin = t => { const [h,m]=t.split(':').map(Number); return h*60+m; };
+const LS = k => { try{ return JSON.parse(localStorage.getItem(k)||'null'); }catch(e){ return null; } };
+const LSset = (k,v) => { try{ localStorage.setItem(k,JSON.stringify(v)); }catch(e){} };
+
+// 지금 몇 일차 몇 번째인지
+function where(){
+  const n = new Date();
+  for (let d=0; d<DAYS.length; d++){
+    const base = new Date(DAYS[d].date+'T00:00:00');
+    const mins = (n - base)/60000;
+    const it = DAYS[d].items;
+    if (mins >= toMin(it[0][0]) - 60 && mins < toMin(it[it.length-1][1])){
+      let idx = it.findIndex(x => mins < toMin(x[1]));
+      return { d, idx, mins };
+    }
+  }
+  return null;
+}
+
+let curDay = 0;
+function renderStatus(){
+  const w = where(), el = $('#status'), n = new Date();
+  const start = new Date('2026-10-01T08:00:00'), end = new Date('2026-10-02T17:30:00');
+  if (w){
+    const it = DAYS[w.d].items[w.idx];
+    el.innerHTML = `<b>${w.d+1}일차</b><span>지금은 <strong>${it[2]}</strong> 시간이에요.</span>`;
+  } else if (n < start){
+    const dd = Math.ceil((new Date('2026-10-01T00:00:00') - new Date(n.getFullYear(),n.getMonth(),n.getDate()))/86400000);
+    el.innerHTML = `<b>D-${dd}</b><span>${dd===1?'내일':'10월 1일'} 아침 <strong>08:00</strong>까지 학교에 모여요. 늦지 않게 와 주세요.</span>`;
+  } else if (n > end){
+    el.innerHTML = `<b>끝</b><span>수학여행이 끝났어요. 모둠 사진 제출을 잊지 마세요.</span>`;
+  } else {
+    el.innerHTML = `<b>밤</b><span>취침 시간이에요. 방 밖으로 나가지 않아요.</span>`;
+  }
+  return w;
+}
+function renderDay(d){
+  curDay = d;
+  document.querySelectorAll('#daySeg button').forEach(b => b.setAttribute('aria-pressed', b.dataset.d==d));
+  const w = where();
+  $('#tl').innerHTML = DAYS[d].items.map((x,i) => {
+    let cls = '';
+    if (w && w.d===d){ if (i<w.idx) cls='done'; else if (i===w.idx) cls='now'; }
+    else if (w && w.d>d) cls='done';
+    const tm = x[0]==='24:00' ? '24:00' : x[0];
+    return `<li class="${cls}"><div class="tm">${tm}</div><div><div class="ev">${x[2]}${cls==='now'?'<span class="badge">지금</span>':''}</div>${x[3]?`<div class="nt">${x[3]}</div>`:''}</div></li>`;
+  }).join('');
+  $('#dayNote').innerHTML = DAYS[d].note;
+}
+$('#daySeg').addEventListener('click', e => { const b=e.target.closest('button'); if(b) renderDay(+b.dataset.d); });
+const w0 = renderStatus();
+renderDay(w0 ? w0.d : (new Date() > new Date('2026-10-02T00:00:00') ? 1 : 0));
+setInterval(() => { renderStatus(); renderDay(curDay); }, 60000);
+
+// ── 탭 ──
+function openTab(t){
+  document.querySelectorAll('.tabs button').forEach(b => b.setAttribute('aria-selected', b.dataset.t===t));
+  document.querySelectorAll('.pane').forEach(p => p.classList.toggle('on', p.id===t));
+  LSset('wd-tab', t);
+  const tabs = document.querySelector('.tabs');
+  if (window.scrollY > tabs.offsetTop) window.scrollTo(0, tabs.offsetTop);
+}
+document.querySelector('.tabs').addEventListener('click', e => { const b=e.target.closest('button'); if(b) openTab(b.dataset.t); });
+if (LS('wd-tab')) openTab(LS('wd-tab'));
+
+// ── 체크리스트 공용 ──
+function checklist(el, key, items, onChange){
+  const st = LS(key) || {};
+  el.innerHTML = items.map((t,i) => `<li><label><input type="checkbox" data-i="${i}" ${st[i]?'checked':''}><span>${t}</span></label></li>`).join('');
+  el.addEventListener('change', e => { st[e.target.dataset.i] = e.target.checked; LSset(key, st); onChange && onChange(); });
+  onChange && onChange();
+}
+
+// ── 준비물 ──
+const PACK = [
+  '운동화 (샌들·슬리퍼·구두 금지)','간편하고 단정한 옷 · 여벌 옷','보온용 겉옷 (밤에 추워요)','속옷 · 양말 · 손수건','모자',
+  '휴대폰 충전기 · 보조배터리','여분 마스크','선크림','세면도구 (치약·칫솔)','휴대용 물티슈','여성용품',
+  '접는 우산 또는 비옷','쓰레기 담을 비닐봉지','물통','상하지 않는 간식 (컵라면 X)','개인 상비약 · 멀미약','용돈 (필요한 만큼만)'
+];
+checklist($('#packList'), 'wd-pack', PACK, () => {
+  const n = document.querySelectorAll('#packList input:checked').length;
+  $('#packCnt').textContent = `${n} / ${PACK.length}`;
+});
+
+// ── 모둠 미션 ──
+const MS = [
+  {day:'DAY 1 · 에버랜드 탐험대'},
+  {no:1,pt:20,t:'에버랜드 보물찾기',d:'5개 중 4개 이상 성공하면 통과',c:[
+    '컬러 헌트 — 빨강·노랑·파랑 물건을 하나씩 찾아 사진 찍기','영어 찾기 — 에버랜드에서 발견한 영어 단어 3개 적기',
+    '포즈 따라잡기 — 놀이기구나 캐릭터가 떠오르는 포즈로 모둠 사진','우리만의 명소 — 예쁜 장소에서 사진 찍고 이유 한마디','탑승 희망 1순위 — 가장 타고 싶은 놀이기구 앞에서 인증샷']},
+  {no:2,pt:15,t:'찰칵! 우리 모둠 포토 챌린지',d:'하나를 골라 10초 안에 찍기 — 모두 같은 포즈 · 웃긴 포즈 · 영화 포스터 · 에버랜드 광고 · 뒤돌아보기 · 자유 포즈',c:[
+    '사진 촬영 완료','사진 제목과 한 줄 설명 쓰기']},
+  {no:3,pt:15,t:'30초 에버랜드 광고',d:'추천하고 싶은 장소나 놀이기구를 30초 영상으로 소개하기. 멋진 말보다 재미있는 소개가 더 좋아요.',c:[
+    '추천 장소와 추천 이유 한 문장 정하기','영상 촬영 완료','모둠원 모두 참여']},
+  {day:'DAY 2 · 한국민속촌 탐험대'},
+  {no:4,pt:20,t:'조선시대 탐정',d:'2026년에서 조선시대로 시간여행을 왔다고 생각하고 찾아보기',c:[
+    '초가집 찾아 사진 찍기','기와집 찾아 사진 찍기','옛날 생활도구 2개 찾아 적기','전통 놀이 하나 찾아 이름 적기','조선시대 직업 하나 찾아 적기']},
+  {no:5,pt:15,t:'조선시대 한 장면',d:'모둠원 모두 등장하는 한 장면을 사진 1장으로 — 장터 · 선비와 하인 · 양반집 가족 · 농사짓는 모습 · 전통 혼례 · 우리만의 장면. 의상·소품은 무리해서 준비하지 않아도 돼요.',c:[
+    '사진 촬영 완료']},
+  {no:6,pt:15,t:'타임머신! 조선시대에 떨어진다면?',d:'모둠원과 이야기해서 하나의 답으로 정하기',c:[
+    '조선시대에서 가장 불편할 것 같은 것','조선시대에서 가장 재미있을 것 같은 것','현대에서 꼭 가져가고 싶은 물건 1가지']},
+];
+$('#msList').innerHTML = MS.map((m,i) => m.day
+  ? `<div class="lbl" style="margin-top:${i?24:0}px">${m.day}</div>`
+  : `<div class="ms"><div class="ms-h"><h3><small>MISSION ${m.no}</small>${m.t}</h3><div class="pt">${m.pt}<small>점</small></div></div><p>${m.d}</p><ul class="chk" id="ms${m.no}"></ul></div>`
+).join('') + `<p class="small muted" style="margin-top:14px">총 100점 (DAY 1 50점 · DAY 2 50점). 특별상: 최우수 모둠상 · 협동상 · 베스트 포토상 · 웃음상 · 창의상 · 탐정상</p>`;
+MS.filter(m => m.no).forEach(m => checklist(document.getElementById('ms'+m.no), 'wd-ms'+m.no, m.c));
+</script>
+</body>
+</html>

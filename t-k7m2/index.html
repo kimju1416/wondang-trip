@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="robots" content="noindex, nofollow">
+<title>수학여행 교사용 · 원당중 2학년</title>
+<meta property="og:title" content="수학여행 교사용 안내">
+<meta property="og:description" content="원당중 2학년 10.1~10.2 · 일정 · 방배정 · 비상연락망">
+<meta property="og:image" content="https://kimju1416.github.io/wondang-trip/img/og.jpg">
+<meta name="theme-color" content="#1F3A5F">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{
+  --pt:#2456A6; --pt-soft:#E8EFFA;
+  --navy:#1F3A5F; --or:#E05A1E;
+  --bg:#F6F8FB; --card:#fff; --line:#E3E9F2;
+  --tx:#1B2A41; --sub:#64748B;
+  --ok:#1D7A4D; --ok-bg:#E7F3EC; --warn:#B26B0F; --warn-bg:#FBF0DE; --err:#C0392B; --err-bg:#F9E8E6;
+  --r1:10px; --r2:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{overflow-x:hidden}
+body{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;background:var(--bg);color:var(--tx);font-size:15px;line-height:1.6;word-break:keep-all;overflow-wrap:anywhere;-webkit-text-size-adjust:100%}
+a{color:inherit}
+img{max-width:100%;display:block}
+
+.hero{position:relative;background:#F6EFE3;overflow:hidden}
+.hero img{width:100%;aspect-ratio:3/2;object-fit:cover;object-position:center 70%}
+.hero-t{position:absolute;left:0;right:0;top:0;padding:18px 20px 0}
+.hero-k{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.04em;color:#fff;background:var(--or);padding:3px 9px;border-radius:6px}
+.hero h1{margin-top:8px;font-size:clamp(22px,6.6vw,34px);line-height:1.25;font-weight:800;color:var(--navy);letter-spacing:-.02em}
+.hero p{margin-top:4px;font-size:clamp(13px,3.6vw,16px);font-weight:600;color:#3B4F6B}
+@media (min-width:640px){.hero img{aspect-ratio:21/9}}
+
+.tabs{position:sticky;top:0;z-index:20;display:grid;grid-template-columns:repeat(4,1fr);background:var(--bg);border-bottom:1px solid var(--line)}
+.tabs button{appearance:none;border:0;background:none;font:inherit;font-size:15px;font-weight:600;color:var(--sub);height:50px;border-bottom:3px solid transparent;cursor:pointer}
+.tabs button[aria-selected=true]{color:var(--pt);border-bottom-color:var(--pt)}
+
+main{max-width:760px;margin:0 auto;padding:16px 16px 60px}
+.pane{display:none}
+.pane.on{display:block}
+.sec{margin-top:28px}
+.sec:first-child{margin-top:4px}
+.lbl{font-size:13px;font-weight:600;color:var(--sub);letter-spacing:.02em;margin-bottom:8px}
+h2{font-size:20px;font-weight:700;margin-bottom:10px;letter-spacing:-.01em}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r2);padding:16px}
+.muted{color:var(--sub)}
+.small{font-size:13px}
+
+.status{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:var(--r2);padding:14px 16px}
+.status b{font-size:26px;font-weight:800;color:var(--pt);white-space:nowrap}
+.status span{font-size:14px}
+
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.fact{background:var(--card);border:1px solid var(--line);border-radius:var(--r2);padding:12px 14px}
+.fact dt{font-size:12px;color:var(--sub);font-weight:600}
+.fact dd{font-size:15px;font-weight:700;margin-top:2px}
+
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:#E6ECF4;padding:4px;border-radius:12px;margin-bottom:12px}
+.seg button{appearance:none;border:0;font:inherit;font-weight:600;font-size:14px;height:44px;border-radius:9px;background:none;color:var(--sub);cursor:pointer}
+.seg button[aria-pressed=true]{background:#fff;color:var(--tx);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+
+.tl{list-style:none;background:var(--card);border:1px solid var(--line);border-radius:var(--r2);overflow:hidden}
+.tl li{display:grid;grid-template-columns:74px 1fr;gap:10px;padding:13px 16px;border-top:1px solid var(--line)}
+.tl li:first-child{border-top:0}
+.tl .tm{font-size:14px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--navy)}
+.tl .ev{font-size:15px;font-weight:600}
+.tl .nt{font-size:13px;color:var(--sub);margin-top:2px}
+.tl li.now{background:var(--pt-soft)}
+.tl li.now .tm{color:var(--pt)}
+.tl li.done{opacity:.5}
+.badge{display:inline-block;font-size:11px;font-weight:700;color:#fff;background:var(--pt);border-radius:5px;padding:1px 6px;margin-left:6px;vertical-align:2px}
+
+.note{background:var(--warn-bg);border-radius:var(--r2);padding:14px 16px;font-size:14px}
+.note b{color:var(--warn)}
+.note ul{padding-left:18px;margin-top:4px}
+.note li+li{margin-top:4px}
+
+ul.dot{list-style:none}
+ul.dot li{position:relative;padding-left:14px}
+ul.dot li+li{margin-top:8px}
+ul.dot li::before{content:"";position:absolute;left:0;top:.7em;width:5px;height:5px;border-radius:50%;background:var(--pt)}
+
+/* 표 공용 */
+.tbl{width:100%;border-collapse:collapse;font-size:14px;background:var(--card)}
+.tbl th,.tbl td{padding:10px 12px;border-top:1px solid var(--line);text-align:left;vertical-align:top}
+.tbl thead th{font-size:12px;color:var(--sub);font-weight:600;background:#FAFBFD;border-top:0}
+.tbl td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+.tblw{border:1px solid var(--line);border-radius:var(--r2);overflow:hidden}
+
+/* 방배정 */
+.search{position:relative}
+.search input{width:100%;height:48px;border:1px solid var(--line);border-radius:var(--r1);padding:0 14px 0 42px;font:inherit;font-size:16px;background:#fff;color:var(--tx)}
+.search input:focus{outline:0;border-color:var(--pt);box-shadow:0 0 0 3px rgba(36,86,166,.12)}
+.search svg{position:absolute;left:14px;top:14px;color:var(--sub)}
+.filters{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.filters button{appearance:none;font:inherit;font-size:13px;font-weight:600;height:34px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--sub);cursor:pointer}
+.filters button[aria-pressed=true]{background:var(--navy);border-color:var(--navy);color:#fff}
+.rooms{list-style:none;background:var(--card);border:1px solid var(--line);border-radius:var(--r2);overflow:hidden;margin-top:12px}
+.rooms li{display:grid;grid-template-columns:64px 1fr;gap:12px;align-items:center;padding:12px 16px;border-top:1px solid var(--line);min-height:56px}
+.rooms li:first-child{border-top:0}
+.rooms .no{font-size:20px;font-weight:800;color:var(--navy);font-variant-numeric:tabular-nums}
+.rooms .who{font-size:15px;font-weight:600}
+.rooms .meta{font-size:12px;color:var(--sub);font-weight:600}
+.tag{display:inline-block;font-size:11px;font-weight:700;border-radius:5px;padding:1px 6px;margin-right:4px}
+.tag.m{background:#E6EEF9;color:#2456A6}
+.tag.f{background:#FBE9EE;color:#B2415F}
+.tag.t{background:#EEF0F3;color:#475569}
+mark{background:#FFE58A;color:inherit;border-radius:3px;padding:0 1px}
+.empty{padding:20px 16px;color:var(--sub);font-size:14px}
+.floor{background:#fff;border:1px solid var(--line);border-radius:var(--r2);overflow:hidden}
+.floor a{display:block}
+.floor p{font-size:12px;color:var(--sub);padding:8px 12px;border-top:1px solid var(--line)}
+
+/* 연락처 */
+.ppl{list-style:none;background:var(--card);border:1px solid var(--line);border-radius:var(--r2);overflow:hidden}
+.ppl li{border-top:1px solid var(--line)}
+.ppl li:first-child{border-top:0}
+.ppl a{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 16px;min-height:60px;text-decoration:none}
+.ppl .nm{font-size:15px;font-weight:700}
+.ppl .rl{font-size:12px;color:var(--sub);font-weight:600}
+.ppl .ph{font-size:14px;font-weight:700;color:var(--pt);font-variant-numeric:tabular-nums;white-space:nowrap}
+.ppl .ti{font-size:12px;font-weight:700;color:var(--ok);background:var(--ok-bg);border-radius:5px;padding:1px 6px;margin-left:4px;white-space:nowrap}
+.ppl .ic{flex:none;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:var(--pt-soft);color:var(--pt)}
+.big119{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.big119 a{display:flex;align-items:center;justify-content:center;gap:8px;height:56px;border-radius:var(--r2);background:var(--err-bg);border:1px solid #F0CFCB;color:var(--err);font-size:20px;font-weight:800;text-decoration:none}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+footer{text-align:center;font-size:12px;color:var(--sub);padding:0 16px 32px}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <img src="../img/hero.jpg" alt="에버랜드와 한국민속촌을 잇는 가을 여행길 그림">
+  <div class="hero-t">
+    <span class="hero-k">교사용 · 외부 공유 금지</span>
+    <h1>2026 2학년 수학여행</h1>
+    <p>10.1(목) – 10.2(금) · 학생 41 · 인솔 6 · 28인승 2대</p>
+  </div>
+</header>
+
+<nav class="tabs" role="tablist">
+  <button role="tab" aria-selected="true" data-t="plan">일정</button>
+  <button role="tab" aria-selected="false" data-t="room">방배정</button>
+  <button role="tab" aria-selected="false" data-t="call">연락처</button>
+  <button role="tab" aria-selected="false" data-t="ops">운영</button>
+</nav>
+
+<main>
+<!-- 일정 -->
+<section class="pane on" id="plan">
+  <div class="sec"><div class="status" id="status"></div></div>
+  <div class="sec">
+    <dl class="facts">
+      <div class="fact"><dt>1호차 · 2-1 (21명)</dt><dd>한유정 · 김국연 · 백장미</dd></div>
+      <div class="fact"><dt>2호차 · 2-2 (20명)</dt><dd>김도근 · 권유경 · 권영교</dd></div>
+      <div class="fact"><dt>숙소</dt><dd>화성 푸르미르 호텔</dd></div>
+      <div class="fact"><dt>에버랜드 주차</dt><dd>제1주차장</dd></div>
+    </dl>
+  </div>
+  <div class="sec">
+    <div class="seg" id="daySeg">
+      <button aria-pressed="true" data-d="0">1일차 · 10.1(목)</button>
+      <button aria-pressed="false" data-d="1">2일차 · 10.2(금)</button>
+    </div>
+    <ol class="tl" id="tl"></ol>
+  </div>
+  <div class="sec" id="dayNote"></div>
+  <div class="sec">
+    <h2>야간 순찰 · 생활 안전지도</h2>
+    <div class="tblw"><table class="tbl">
+      <thead><tr><th>시간</th><th>담당</th></tr></thead>
+      <tbody>
+        <tr><td class="n">10.1 07:30–16:30</td><td>인솔교사 · 학생 인솔 및 안전 지도</td></tr>
+        <tr><td class="n">10.1 16:30–24:00</td><td>인솔교사 · 야간안전요원 1명(22:00–07:00)</td></tr>
+        <tr><td class="n">10.2 00:00–02:00</td><td><b>권유경(교감) · 김국연</b></td></tr>
+        <tr><td class="n">10.2 02:00–04:00</td><td><b>한유정 · 김도근</b></td></tr>
+        <tr><td class="n">10.2 04:00–06:00</td><td><b>권영교 · 백장미</b></td></tr>
+        <tr><td class="n">10.2 06:00–08:30</td><td>인솔교사</td></tr>
+        <tr><td class="n">10.2 08:30–18:00</td><td>인솔교사 · 학생 인솔 및 안전 지도</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<!-- 방배정 -->
+<section class="pane" id="room">
+  <div class="sec">
+    <div class="search">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="학생 이름 또는 호수" autocomplete="off">
+    </div>
+    <div class="filters" id="flt">
+      <button aria-pressed="true" data-f="all">전체</button>
+      <button aria-pressed="false" data-f="1m">1반 남</button>
+      <button aria-pressed="false" data-f="1f">1반 여</button>
+      <button aria-pressed="false" data-f="2m">2반 남</button>
+      <button aria-pressed="false" data-f="2f">2반 여</button>
+      <button aria-pressed="false" data-f="t">교사</button>
+    </div>
+    <ul class="rooms" id="rooms"></ul>
+  </div>
+  <div class="sec">
+    <h2>1층 객실 위치</h2>
+    <div class="floor">
+      <a href="../img/floor1.jpg" target="_blank" rel="noopener"><img src="../img/floor1.jpg" alt="푸르미르 호텔 1층 객실 배치도"></a>
+      <p>눌러서 크게 보기 · 117·118호는 회의실로 사용 · GATE 3·4·5 위치 확인</p>
+    </div>
+  </div>
+</section>
+
+<!-- 연락처 -->
+<section class="pane" id="call">
+  <div class="sec">
+    <div class="big119"><a href="tel:119">119</a><a href="tel:112">112</a></div>
+  </div>
+  <div class="sec">
+    <h2>인솔 교사</h2>
+    <ul class="ppl" id="pplT"></ul>
+  </div>
+  <div class="sec">
+    <h2>보고 · 교육청</h2>
+    <ul class="ppl" id="pplE"></ul>
+  </div>
+  <div class="sec">
+    <h2>용인 · 에버랜드 · 민속촌 주변</h2>
+    <p class="small muted" style="margin:-4px 0 8px">초록 표시는 에버랜드 출발 기준 소요시간</p>
+    <ul class="ppl" id="pplY"></ul>
+  </div>
+  <div class="sec">
+    <h2>화성 · 숙소 주변</h2>
+    <p class="small muted" style="margin:-4px 0 8px">초록 표시는 숙소 출발 기준 소요시간</p>
+    <ul class="ppl" id="pplH"></ul>
+  </div>
+</section>
+
+<!-- 운영 -->
+<section class="pane" id="ops">
+  <div class="sec">
+    <h2>참가 인원</h2>
+    <div class="tblw"><table class="tbl">
+      <thead><tr><th>반</th><th>재적(남/여)</th><th>참여</th><th>불참</th><th>차량 · 담임</th></tr></thead>
+      <tbody>
+        <tr><td><b>2-1</b></td><td class="n">8 / 14</td><td class="n">22</td><td class="n">·</td><td>1호차 · 한유정</td></tr>
+        <tr><td><b>2-2</b></td><td class="n">8 / 11</td><td class="n">19</td><td class="n">3</td><td>2호차 · 김도근</td></tr>
+        <tr><td><b>합계</b></td><td class="n">16 / 25</td><td class="n">41</td><td class="n">3</td><td>인솔 교사 6</td></tr>
+      </tbody>
+    </table></div>
+    <p class="small muted" style="margin-top:6px">계획서 표 기준. 방 배정표상 인원은 2-1 21명 · 2-2 20명(합 41명).</p>
+  </div>
+
+  <div class="sec">
+    <h2>업무 분장</h2>
+    <div class="tblw"><table class="tbl"><tbody>
+      <tr><td>인솔 책임자</td><td><b>교감</b></td></tr>
+      <tr><td>전체 진행 · 총무 · 서류/경비/사진 · 안전지도 책자</td><td><b>한유정</b></td></tr>
+      <tr><td>안전요원(2명)</td><td><b>김국연 · 김도근</b></td></tr>
+      <tr><td>운전기사 음주측정</td><td><b>김국연</b></td></tr>
+      <tr><td>규칙 위반 학생 생활지도</td><td><b>김국연 · 한유정 · 김도근</b></td></tr>
+      <tr><td>특수교육대상학생 지도</td><td><b>백장미</b>(특수교사)</td></tr>
+      <tr><td>응급치료 · 비상약 관리</td><td><b>권영교</b></td></tr>
+      <tr><td>학생 건강 상태 확인 · 객실 키 배부/반납</td><td><b>각반 담임</b></td></tr>
+      <tr><td>학생 인솔 · 안전지도 · 식사 지도 · 버스 하차/퇴실 분실물</td><td><b>인솔 교사</b></td></tr>
+    </tbody></table></div>
+  </div>
+
+  <div class="sec">
+    <h2>체크 포인트</h2>
+    <div class="card">
+      <ul class="dot">
+        <li>출발 전 학생 건강상태 확인 · 반별 비상연락망 지참</li>
+        <li>유튜브 '현장체험학습 안전교육' 영상 — 반 단톡방 링크 전송, 시청 후 댓글</li>
+        <li>버스 출발 전 인원 점검 철저 · 탑승 후 안전벨트 확인 · 차량 내 안전교육 의무</li>
+        <li>에버랜드 도착 전: 안전교육, 입장 QR·스마트 줄서기, 밀쿠폰 12,000원 안내</li>
+        <li>민속촌 도착 전: 안전교육, 밀쿠폰 10,000원 안내 · 퇴장 후 재입장 불가</li>
+        <li>입장 후 담임 지도하에 반별 단체 사진</li>
+        <li>숙소 도착 전 안전교육 · 조식 시간 안내 · 입장 후 반별 집합</li>
+        <li>건강 이상 등은 담임에게, 버스 관련은 인솔 교사가 안내. 담임과 연락이 안 되면 다른 인솔 교사에게</li>
+        <li>에버랜드 교사 집결지: 알파인 의무실 · 교사 휴게실 · 정문 의무실 · 유아 휴게실 · 공원교 · 평석교 · 목교</li>
+        <li>버스마다 구급용품(두통약·밴드) · 한 버스에 2개 반 탑승 시 마찰 주의</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2>사안 발생 시</h2>
+    <div class="card">
+      <ol style="padding-left:18px">
+        <li>즉시 현지 경찰서·소방서·보건소 등에 신고하고 구조 요청</li>
+        <li>인솔자는 즉시 학교에 연락 → 학교는 교육지원청·도교육청(교육안전과, 학생생활과)에 피해상황 보고</li>
+        <li>필요 시 학교·교사·학생·학부모 비상연락망과 문자로 즉시 연락</li>
+      </ol>
+      <div class="lbl" style="margin-top:14px">유선보고 후 사안 보고 대상</div>
+      <ul class="dot">
+        <li><b>인사사고</b>(인원수 불문) — 사망·입원 치료를 요하는 중상 / 같은 장소·활동 중 2명 이상 동시 병원 치료 / 종료 후에도 지속 입원 치료</li>
+        <li><b>식중독·전염병</b> — 동일 원인 추정 유사 증세 2명 이상 동시 발생</li>
+        <li><b>화재·붕괴·폭발</b> 등 언론보도·사회적 파장이 큰 사고</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2>감염병 대응</h2>
+    <div class="card">
+      <ul class="dot">
+        <li>가정에서 37.5℃ 이상 발열·감염병 의심 시 등교하지 않고 담임에게 연락 후 진료</li>
+        <li>대상: 인플루엔자, 수두, 성홍열, 볼거리, 수족구, 홍역, 백일해, 노로, 코로나19, 로타, 유행성 각결막염, 마이코플라즈마폐렴 등</li>
+        <li>손 씻기·기침 예절(증상 시 마스크)·환기, 의심 증상 시 신속 진료</li>
+        <li>여행 중 감염자 발생 시 보건 교사 판단 하에 부모 동행 귀가 조치 가능</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2>모둠 미션 시상</h2>
+    <div class="card">
+      <ul class="dot">
+        <li>반별 우수 작품 선정 — 최우수 1팀 4만원, 우수 1팀 3만원 상품권 (총 7만원)</li>
+        <li>100점 만점 (DAY 1 에버랜드 50 · DAY 2 민속촌 50) · 대표 사진 2~3장 귀교 후 제출</li>
+        <li>수학여행 사진은 학교 축제 때 전시 예정</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2>2일차 조식 · 알레르기 주의</h2>
+    <div class="card small">
+      <p><b>샐러드</b> 양상추, 라디치오, 방울토마토, 비타민, 드레싱 3종·꽃맛살 샐러드·감자 샐러드(변동)</p>
+      <p><b>핫</b> 스크램블, 베이컨, 치폴라타, 감자튀김(케첩), 가라아게, 흰밥, 한식 국·스프(변동)</p>
+      <p><b>햄·치즈</b> 본레스 햄, 비어 햄, 아메리칸·스위스·에멘탈·스모크 치즈</p>
+      <p><b>빵·시리얼</b> 플레인 식빵, 모닝빵, 바게트 · 초코첵스, 아몬드 후레이크, 후르트 링</p>
+      <p><b>요거트·과일</b> 플레인 요거트, 견과류 4종(변동) · 파인애플, 오렌지, 바나나</p>
+      <p><b>반찬</b> 배추김치, 나물 또는 볶음(변동), 오징어 젓갈, 김</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>구미원당중학교 2학년 수학여행 · 교사 전용 링크입니다. 학생·학부모에게 공유하지 마세요.</footer>
+
+<script>
+const DAYS = [
+  { date:'2026-10-01', items:[
+    ['08:00','08:30','인원 점검 후 출발','출발 전 건강상태 확인 · 안전벨트 확인'],
+    ['08:30','10:00','충주휴게소 휴식 후 출발',''],
+    ['10:00','11:40','에버랜드 도착 (제1주차장)','도착 전 안전교육 · QR·스마트 줄서기 · 밀쿠폰 12,000원 안내'],
+    ['11:40','12:10','에버랜드 입장 · 반별 단체 사진',''],
+    ['12:10','21:30','자유시간 · 중식·석식','퍼레이드·불꽃놀이 관람'],
+    ['21:30','22:20','숙소 이동 및 도착','화성 푸르미르 호텔 · 하차 전 안전교육, 조식 시간 안내'],
+    ['22:20','23:30','방 배정 후 자유시간','객실 키 배부(각반 담임)'],
+    ['23:30','24:00','담임교사 점호 · 안전교육',''],
+    ['24:00','31:00','취침','00–06시 2시간 교대 순찰'],
+  ], note:''},
+  { date:'2026-10-02', items:[
+    ['07:00','07:20','기상 및 세면',''],
+    ['07:20','08:20','조식 및 퇴실 준비','알레르기 학생 확인'],
+    ['08:20','09:00','객실 카드 반납 · 차량 탑승','분실물 확인'],
+    ['09:00','10:00','한국민속촌으로 출발','도착 전 안전교육 · 밀쿠폰 10,000원 · 재입장 불가'],
+    ['10:00','10:10','한국민속촌 입장 · 반별 단체 사진',''],
+    ['10:10','13:30','자유시간 및 중식','공연 11:00 어서오시오! · 12:00 삼도판굿 · 12:30 소리 따라 걷는 민속촌'],
+    ['13:30','16:40','인원 점검 후 출발','휴게소 휴식'],
+    ['16:40','17:30','학교 도착 · 귀가 지도',''],
+  ], note:''},
+];
+const ROOMS = [
+  ['101','2m','곽민혁, 구도형, 오재윤'],
+  ['102','2m','남권우, 정수민, 김채진'],
+  ['103','2f','이채영, 황지유, 최서연'],
+  ['104','2f','김나현, 이혜원, 김채빈'],
+  ['105','2f','윤지윤, 김송아, 손은지'],
+  ['106','2f','백장미 선생님, 이규린'],
+  ['107','1m','김도영, 윤혁진'],
+  ['108','1m','최현준, 최황선'],
+  ['109','1m','김강민, 김민찬'],
+  ['110','1m','문지수, 주동윤'],
+  ['111','1f','구채은, 김규린'],
+  ['112','1f','나윤서, 박소희'],
+  ['113','1f','김라엘, 박도현, 이도경'],
+  ['114','1f','박소이, 정예은'],
+  ['115','1f','강예린, 김하늘'],
+  ['116','1f','김가람, 김시호'],
+  ['119','t','교감 선생님(권유경)'],
+  ['120','t','권영교 선생님, 한유정 선생님'],
+  ['121','2m','조문규, 최상원'],
+  ['122','2f','김예인, 신소정'],
+  ['123','t','김국연 선생님, 김도근 선생님'],
+];
+const TEACH = [
+  ['권유경','교감 · 인솔 책임자 · 2호차','010-2875-0274'],
+  ['한유정','2-1 담임 · 전체 진행/총무 · 1호차','010-3507-0153'],
+  ['김도근','2-2 담임 · 안전요원 · 2호차','010-2851-6780'],
+  ['김국연','학생안전부장 · 안전요원 · 1호차','010-4949-2143'],
+  ['권영교','진로상담부장 · 응급/비상약 · 2호차','010-4528-0913'],
+  ['백장미','특수교사 · 1호차','010-2513-6836'],
+];
+const EDU = [
+  ['경북교육청 교육안전과','주간','080-851-4500'],
+  ['경북교육청 당직실','휴일·야간','054-805-3048'],
+  ['구미교육지원청 장학사','','054-440-2322'],
+  ['용인교육지원청','에버랜드·민속촌 관할','031-8020-9114'],
+  ['화성오산교육지원청','숙소 관할','031-371-0600'],
+];
+const YONGIN = [
+  ['용인소방서 포곡119안전센터','소방','031-8021-0551','4분'],
+  ['용인동부경찰서 포곡파출소','경찰','031-260-0431','5분'],
+  ['용인제일메디병원','병원','031-322-7581','4분'],
+  ['용인세브란스병원 응급진료센터','응급실','031-5189-8015','13분'],
+  ['용인서울병원 지역응급의료기관','응급실','031-336-0119','13분'],
+  ['용인소방서 동백119안전센터','소방','031-8021-0591','15분'],
+  ['용인소방서 구갈119안전센터','소방','031-8021-0511',''],
+  ['용인소방서 기흥119안전센터','소방 · 민속촌 인근','031-8021-0152',''],
+  ['강남병원 지역응급의료센터','응급실','031-300-0119',''],
+  ['명주병원 지역응급의료센터','응급실','070-5005-9316',''],
+  ['다보스병원 지역응급의료센터','응급실','031-8021-2119',''],
+];
+const HWASEONG = [
+  ['봉담지구대','경찰','031-5183-1622','5분'],
+  ['원광종합병원','병원','031-8077-7200','6분'],
+  ['봉담119안전센터','소방','031-8012-6561','10분'],
+  ['경기화성서부경찰서','경찰','182','18분'],
+  ['화성소방서','소방','031-8012-6119','20분'],
+];
+
+const $ = s => document.querySelector(s);
+const toMin = t => { const [h,m]=t.split(':').map(Number); return h*60+m; };
+const LS = k => { try{ return JSON.parse(localStorage.getItem(k)||'null'); }catch(e){ return null; } };
+const LSset = (k,v) => { try{ localStorage.setItem(k,JSON.stringify(v)); }catch(e){} };
+const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+// ── 일정 ──
+function where(){
+  const n = new Date();
+  for (let d=0; d<DAYS.length; d++){
+    const mins = (n - new Date(DAYS[d].date+'T00:00:00'))/60000, it = DAYS[d].items;
+    if (mins >= toMin(it[0][0]) - 60 && mins < toMin(it[it.length-1][1]))
+      return { d, idx: it.findIndex(x => mins < toMin(x[1])) };
+  }
+  return null;
+}
+let curDay = 0;
+function renderStatus(){
+  const w = where(), el = $('#status'), n = new Date();
+  if (w){
+    const it = DAYS[w.d].items[w.idx];
+    el.innerHTML = `<b>${w.d+1}일차</b><span>지금: <strong>${it[2]}</strong> (~${it[1]==='31:00'?'07:00':it[1]})</span>`;
+  } else if (n < new Date('2026-10-01T08:00:00')){
+    const dd = Math.ceil((new Date('2026-10-01T00:00:00') - new Date(n.getFullYear(),n.getMonth(),n.getDate()))/86400000);
+    el.innerHTML = `<b>D-${dd}</b><span>10.1(목) 08:00 학교 집합 · 08:30 출발</span>`;
+  } else if (n > new Date('2026-10-02T17:30:00')){
+    el.innerHTML = `<b>종료</b><span>수학여행 일정이 끝났습니다.</span>`;
+  } else {
+    el.innerHTML = `<b>야간</b><span>취침 · 교대 순찰 시간</span>`;
+  }
+  return w;
+}
+function renderDay(d){
+  curDay = d;
+  document.querySelectorAll('#daySeg button').forEach(b => b.setAttribute('aria-pressed', b.dataset.d==d));
+  const w = where();
+  $('#tl').innerHTML = DAYS[d].items.map((x,i) => {
+    let cls = '';
+    if (w && w.d===d){ if (i<w.idx) cls='done'; else if (i===w.idx) cls='now'; }
+    else if (w && w.d>d) cls='done';
+    return `<li class="${cls}"><div class="tm">${x[0]}</div><div><div class="ev">${x[2]}${cls==='now'?'<span class="badge">지금</span>':''}</div>${x[3]?`<div class="nt">${x[3]}</div>`:''}</div></li>`;
+  }).join('');
+}
+$('#daySeg').addEventListener('click', e => { const b=e.target.closest('button'); if(b) renderDay(+b.dataset.d); });
+const w0 = renderStatus();
+renderDay(w0 ? w0.d : (new Date() > new Date('2026-10-02T00:00:00') ? 1 : 0));
+setInterval(() => { renderStatus(); renderDay(curDay); }, 60000);
+
+// ── 방배정 ──
+const TAGS = {'1m':['m','1반 남'],'1f':['f','1반 여'],'2m':['m','2반 남'],'2f':['f','2반 여'],'t':['t','교사']};
+let flt = 'all';
+function renderRooms(){
+  const q = $('#q').value.trim();
+  const list = ROOMS.filter(r => (flt==='all' || r[1]===flt || (flt==='2f' && r[0]==='106')) && (!q || r[0].includes(q) || r[2].includes(q)));
+  $('#rooms').innerHTML = list.length ? list.map(r => {
+    const [cls, lab] = TAGS[r[1]];
+    const cnt = r[2].split(',').length;
+    let who = esc(r[2]);
+    if (q) who = who.split(esc(q)).join(`<mark>${esc(q)}</mark>`);
+    return `<li><div class="no">${r[0]}</div><div><div class="meta"><span class="tag ${cls}">${r[0]==='106'?'교사+2반 여':lab}</span>${cnt}명</div><div class="who">${who}</div></div></li>`;
+  }).join('') : `<li class="empty" style="display:block">'${esc(q)}'에 해당하는 방이 없습니다.</li>`;
+}
+$('#q').addEventListener('input', renderRooms);
+$('#flt').addEventListener('click', e => {
+  const b = e.target.closest('button'); if(!b) return;
+  flt = b.dataset.f;
+  document.querySelectorAll('#flt button').forEach(x => x.setAttribute('aria-pressed', x===b));
+  renderRooms();
+});
+renderRooms();
+
+// ── 연락처 ──
+const PH = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>';
+function ppl(el, rows){
+  el.innerHTML = rows.map(r => `<li><a href="tel:${r[2]}"><div><div class="nm">${r[0]}${r[3]?`<span class="ti">${r[3]}</span>`:''}</div><div class="rl">${r[1]}</div></div><div style="display:flex;align-items:center;gap:10px"><span class="ph">${r[2]}</span><span class="ic">${PH}</span></div></a></li>`).join('');
+}
+ppl($('#pplT'), TEACH); ppl($('#pplE'), EDU); ppl($('#pplY'), YONGIN); ppl($('#pplH'), HWASEONG);
+
+// ── 탭 ──
+function openTab(t){
+  document.querySelectorAll('.tabs button').forEach(b => b.setAttribute('aria-selected', b.dataset.t===t));
+  document.querySelectorAll('.pane').forEach(p => p.classList.toggle('on', p.id===t));
+  LSset('wdt-tab', t);
+  const tabs = document.querySelector('.tabs');
+  if (window.scrollY > tabs.offsetTop) window.scrollTo(0, tabs.offsetTop);
+}
+document.querySelector('.tabs').addEventListener('click', e => { const b=e.target.closest('button'); if(b) openTab(b.dataset.t); });
+if (LS('wdt-tab')) openTab(LS('wdt-tab'));
+</script>
+</body>
+</html>
